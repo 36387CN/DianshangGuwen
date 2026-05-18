@@ -42,10 +42,18 @@ h1{font-size:52px;background:linear-gradient(90deg,#00d1ff,#7e5eff,#ff57c1);-web
 .card li::before{content:'▶';position:absolute;left:0;color:#00d1ff}
 
 /* 按钮固定底部 */
-.btn{display:block;padding:14px;text-align:center;background:linear-gradient(90deg,#00d1ff,#7e5eff);color:#fff;border-radius:12px;text-decoration:none;font-weight:500;font-size:16px;transition:.3s;box-shadow:0 0 12px rgba(0,209,255,.3);margin-top:auto}
+.btn{display:block;padding:14px;text-align:center;background:linear-gradient(90deg,#00d1ff,#7e5eff);color:#fff;border-radius:12px;text-decoration:none;font-weight:500;font-size:16px;transition:.3s;box-shadow:0 0 12px rgba(0,209,255,.3);margin-top:auto;cursor:pointer}
 .btn:hover{opacity:.95;transform:scale(1.05);box-shadow:0 0 20px rgba(0,209,255,.4)}
 
 footer{text-align:center;padding:60px 20px;color:#7a86b2;margin-top:60px}
+
+/* 收款码弹窗样式 */
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:9999;justify-content:center;align-items:center}
+.modal-content{background:rgba(10,15,35,.95);border:2px solid #00d1ff;border-radius:18px;padding:30px;text-align:center;max-width:400px;width:90%}
+.modal-content img{width:100%;max-width:300px;border-radius:10px;margin:20px 0}
+.close-btn{background:#ff57c1;border:none;color:#fff;padding:10px 20px;border-radius:8px;font-size:16px;margin-top:15px;cursor:pointer;transition:.3s}
+.close-btn:hover{background:#ff3a9d;transform:scale(1.05)}
+
 @media(max-width:768px){
 h1{font-size:36px}
 .products{grid-template-columns:1fr}
@@ -53,6 +61,22 @@ h1{font-size:36px}
 </style>
 </head>
 <body>
+<!-- 背景音乐 -->
+<audio autoplay loop muted id="bg-music">
+  <source src="https://example.com/dadi-dj.mp3" type="audio/mpeg">
+  您的浏览器不支持音频播放
+</audio>
+
+<!-- 收款码弹窗 -->
+<div class="modal" id="wechatModal">
+  <div class="modal-content">
+    <h2 style="color:#00d1ff;margin-bottom:10px">微信收款码</h2>
+    <img src="/img/wechat-pay.jpg" alt="微信收款码">
+    <p style="color:#ccd6f6;margin:10px 0">扫码付款后请联系客服确认：19902364771</p>
+    <button class="close-btn" onclick="closeModal()">关闭</button>
+  </div>
+</div>
+
 <div class="bg">
 <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
 </div>
@@ -75,7 +99,7 @@ h1{font-size:36px}
 <li>请勿用作生产力</li>
 <li>无法升级</li>
 </ul>
-<a href="tel:19902364771" class="btn">立即咨询</a>
+<div class="btn" onclick="openModal()">立即付款</div>
 </div>
 
 <!-- SSD固态硬盘版 -->
@@ -90,7 +114,7 @@ h1{font-size:36px}
 <li>内部培训</li>
 <li>大量Token，可生产力使用</li>
 </ul>
-<a href="tel:19902364771" class="btn">立即咨询</a>
+<div class="btn" onclick="openModal()">立即付款</div>
 </div>
 
 <!-- DELL主机版 -->
@@ -102,7 +126,7 @@ h1{font-size:36px}
 <li>通电即用</li>
 <li>福利同固态硬盘版</li>
 </ul>
-<a href="tel:19902364771" class="btn">立即咨询</a>
+<div class="btn" onclick="openModal()">立即付款</div>
 </div>
 
 <!-- 全套生产力版 -->
@@ -117,7 +141,7 @@ h1{font-size:36px}
 <li>选装OPC一人公司AI系统（可选）</li>
 <li>选装智能家居系统（可选，二选一）</li>
 </ul>
-<a href="tel:19902364771" class="btn">立即咨询</a>
+<div class="btn" onclick="openModal()">立即付款</div>
 </div>
 
 <!-- 网站运营版 -->
@@ -129,7 +153,7 @@ h1{font-size:36px}
 <li>网站构建与运营支持</li>
 <li>按需定制功能</li>
 </ul>
-<a href="tel:19902364771" class="btn">咨询定制</a>
+<div class="btn" onclick="openModal()">咨询定制</div>
 </div>
 
 <!-- 落地定制版 -->
@@ -141,7 +165,7 @@ h1{font-size:36px}
 <li>行业落地生产力定制</li>
 <li>一对一方案设计</li>
 </ul>
-<a href="tel:19902364771" class="btn">咨询定制</a>
+<div class="btn" onclick="openModal()">咨询定制</div>
 </div>
 
 </div>
@@ -152,6 +176,33 @@ h1{font-size:36px}
 </div>
 
 <script>
+// 背景音乐控制（可选：取消静音）
+const music = document.getElementById('bg-music');
+// 点击页面任意位置取消静音（解决浏览器自动播放策略限制）
+document.addEventListener('click', () => {
+  if (music.muted) {
+    music.muted = false;
+  }
+}, { once: true });
+
+// 弹窗控制
+function openModal() {
+  document.getElementById('wechatModal').style.display = 'flex';
+}
+
+function closeModal() {
+  document.getElementById('wechatModal').style.display = 'none';
+}
+
+// 点击弹窗外部关闭
+window.onclick = function(event) {
+  const modal = document.getElementById('wechatModal');
+  if (event.target === modal) {
+    closeModal();
+  }
+}
+
+// 卡片浮动动画
 document.querySelectorAll('.card').forEach((card,i)=>{
 card.style.animation=`float 6s ease-in-out infinite`
 card.style.animationDelay=`${i*0.5}s`
