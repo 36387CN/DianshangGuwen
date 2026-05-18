@@ -45,6 +45,44 @@ h1{font-size:52px;background:linear-gradient(90deg,#00d1ff,#7e5eff,#ff57c1);-web
 .btn{display:block;padding:14px;text-align:center;background:linear-gradient(90deg,#00d1ff,#7e5eff);color:#fff;border-radius:12px;text-decoration:none;font-weight:500;font-size:16px;transition:.3s;box-shadow:0 0 12px rgba(0,209,255,.3);margin-top:auto;cursor:pointer}
 .btn:hover{opacity:.95;transform:scale(1.05);box-shadow:0 0 20px rgba(0,209,255,.4)}
 
+/* 大模型列表样式 */
+.model-list {
+  max-width: 1300px;
+  margin: 40px auto 20px;
+  padding: 30px 20px;
+  background: rgba(10,15,35,.8);
+  border: 1px solid rgba(0,209,255,.2);
+  border-radius: 18px;
+  backdrop-filter: blur(12px);
+}
+.model-list h3 {
+  font-size: 24px;
+  color: #00d1ff;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.model-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+.model-tags span {
+  padding: 8px 16px;
+  background: rgba(126, 94, 255, 0.2);
+  border: 1px solid rgba(126, 94, 255, 0.3);
+  border-radius: 8px;
+  color: #ccd6f6;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: .3s;
+}
+.model-tags span:hover {
+  background: rgba(126, 94, 255, 0.4);
+  border-color: #7e5eff;
+  transform: scale(1.05);
+}
+
 footer{text-align:center;padding:60px 20px;color:#7a86b2;margin-top:60px}
 
 /* 收款码弹窗样式 */
@@ -57,6 +95,15 @@ footer{text-align:center;padding:60px 20px;color:#7a86b2;margin-top:60px}
 @media(max-width:768px){
 h1{font-size:36px}
 .products{grid-template-columns:1fr}
+.model-tags {
+  justify-content: flex-start;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  flex-wrap: nowrap;
+}
+.model-tags span {
+  font-size: 13px;
+}
 }
 </style>
 </head>
@@ -168,6 +215,43 @@ h1{font-size:36px}
 <div class="btn" onclick="openModal()">咨询定制</div>
 </div>
 
+</div>
+
+<!-- 新增的大模型列表区域 -->
+<div class="model-list">
+  <h3>免费token，只需一个 API 密钥，自动使用以下大模型</h3>
+  <div class="model-tags">
+    <span>claude-sonnet-4.5</span>
+    <span>claude-haiku-4.5</span>
+    <span>deepseek-3.2</span>
+    <span>qwen3-coder-next</span>
+    <span>glm-5</span>
+    <span>MiniMax-M2.5</span>
+    <span>claude-sonnet-4.5-thinking</span>
+    <span>claude-haiku-4.5-thinking</span>
+    <span>claude-haiku-4.5-agentic</span>
+    <span>claude-sonnet-4.5-thinking-agentic</span>
+    <span>claude-haiku-4.5-thinking-agentic</span>
+    <span>minimax-m2.5</span>
+    <span>ring-2.6-1t</span>
+    <span>qwen3.6-plus</span>
+    <span>nemotron-3-super</span>
+    <span>deepseek-v4-flash</span>
+    <span>owl-alpha</span>
+    <span>lyria-3-pro-preview</span>
+    <span>lyria-3-clip-preview</span>
+    <span>inclusionai/ring-2.6-1t</span>
+    <span>gemma-4-26b-a4b-it</span>
+    <span>gemma-4-31b-it</span>
+    <span>nemotron-3-super-120b-a12b</span>
+    <span>qwen3-next-80b-a3b-instruct</span>
+    <span>qwen3-coder</span>
+    <span>nemotron-3-nano-omni-30b-a3b-reasoning</span>
+    <span>nemotron-3-nano-30b-a3b</span>
+    <span>deepseek-v4-flash</span>
+    <span>trinity-large-thinking</span>
+    <span>minimax-m2.5</span>
+  </div>
 </div>
 
 <footer>
