@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>免费Token算力 - AI科技时代</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Roboto,'Microsoft YaHei',sans-serif}
+body{background:#020215;color:#fff;overflow-x:hidden}
+
+/* 动态科技背景 */
+.bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;background:radial-gradient(circle at 50% 50%,#050a20 0%,#020210 100%);}
+.line{position:fixed;width:100%;height:2px;background:linear-gradient(90deg,transparent,#00d1ff,transparent);animation:line 4s linear infinite;opacity:.3}
+.line:nth-child(1){top:20%;animation-delay:0s}
+.line:nth-child(2){top:40%;animation-delay:1s}
+.line:nth-child(3){top:60%;animation-delay:2s}
+.line:nth-child(4){top:80%;animation-delay:3s}
+@keyframes line{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+
+/* 头部 */
+header{text-align:center;padding:70px 20px 40px}
+h1{font-size:52px;background:linear-gradient(90deg,#00d1ff,#7e5eff,#ff57c1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:glow 2s ease-in-out infinite alternate;margin-bottom:16px}
+@keyframes glow{0%{filter:brightness(1)}100%{filter:brightness(1.3)}}
+.subtitle{font-size:20px;color:#a8b2d3;margin-bottom:24px}
+.contact{font-size:24px;color:#00d1ff;font-weight:600;text-shadow:0 0 12px #00d1ff}
+
+/* 布局容器 */
+.container{max-width:1300px;margin:0 auto;padding:20px}
+.products{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:32px}
+
+/* 卡片（底部固定按钮） */
+.card{background:rgba(10,15,35,.8);border:1px solid rgba(0,209,255,.2);border-radius:18px;padding:32px;position:relative;overflow:hidden;transition:.4s;backdrop-filter:blur(12px);display:flex;flex-direction:column;height:100%}
+.card:hover{transform:translateY(-12px) scale(1.02);border-color:#00d1ff;box-shadow:0 0 30px rgba(0,209,255,.25)}
+.card::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(0,209,255,.08),transparent);transition:.6s}
+.card:hover::after{left:100%}
+
+.card-title{font-size:26px;color:#00d1ff;margin-bottom:16px}
+.price{font-size:32px;font-weight:700;color:#7e5eff;margin-bottom:20px}
+.card-img{width:100%;height:180px;object-fit:contain;border-radius:10px;background:rgba(0,0,0,.3);padding:10px;margin-bottom:20px}
+.card ul{list-style:none;margin-bottom:24px;flex-grow:1}
+.card li{padding:8px 0;padding-left:22px;position:relative;color:#ccd6f6}
+.card li::before{content:'▶';position:absolute;left:0;color:#00d1ff}
+
+/* 按钮固定底部 */
+.btn{display:block;padding:14px;text-align:center;background:linear-gradient(90deg,#00d1ff,#7e5eff);color:#fff;border-radius:12px;text-decoration:none;font-weight:500;font-size:16px;transition:.3s;box-shadow:0 0 12px rgba(0,209,255,.3);margin-top:auto}
+.btn:hover{opacity:.95;transform:scale(1.05);box-shadow:0 0 20px rgba(0,209,255,.4)}
+
+footer{text-align:center;padding:60px 20px;color:#7a86b2;margin-top:60px}
+@media(max-width:768px){
+h1{font-size:36px}
+.products{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="bg">
+<div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+</div>
+
+<div class="container">
+<header>
+<h1>免费Token算力 · AI科技时代</h1>
+<p class="subtitle">低门槛进入AI生产力时代，U盘/SSD/主机多版本可选，每日免费Token，助力AI创作与部署</p>
+<p class="contact">电话/微信：19902364771</p>
+</header>
+
+<div class="products">
+<!-- U盘版 -->
+<div class="card">
+<h3 class="card-title">U盘版</h3>
+<div class="price">¥198</div>
+<img src="https://picsum.photos/id/42/600/400" class="card-img" alt="U盘实拍图">
+<ul>
+<li>每天赠送有限Token</li>
+<li>请勿用作生产力</li>
+<li>无法升级</li>
+</ul>
+<a href="tel:19902364771" class="btn">立即咨询</a>
+</div>
+
+<!-- SSD固态硬盘版 -->
+<div class="card">
+<h3 class="card-title">固态硬盘版</h3>
+<div class="price">¥1980</div>
+<img src="https://picsum.photos/id/324/600/400" class="card-img" alt="SSD实拍图">
+<ul>
+<li>到手替换主机内硬盘</li>
+<li>加入VIP会员</li>
+<li>持续升级</li>
+<li>内部培训</li>
+<li>大量Token，可生产力使用</li>
+</ul>
+<a href="tel:19902364771" class="btn">立即咨询</a>
+</div>
+
+<!-- DELL主机版 -->
+<div class="card">
+<h3 class="card-title">主机板</h3>
+<div class="price">¥2300</div>
+<img src="https://picsum.photos/id/204/600/400" class="card-img" alt="DELL主机实拍图">
+<ul>
+<li>通电即用</li>
+<li>福利同固态硬盘版</li>
+</ul>
+<a href="tel:19902364771" class="btn">立即咨询</a>
+</div>
+
+<!-- 全套生产力版 -->
+<div class="card">
+<h3 class="card-title">全套生产力版</h3>
+<div class="price">¥3500</div>
+<ul>
+<li>通电即用</li>
+<li>福利同固态硬盘版</li>
+<li>预装Hermes官方稳定AI系统</li>
+<li>预装Hermes-WebUI（浏览器操作）</li>
+<li>OPC一人公司AI系统（可选）</li>
+<li>智能家居系统（可选，二选一）</li>
+</ul>
+<a href="tel:19902364771" class="btn">立即咨询</a>
+</div>
+
+<!-- 网站运营版 -->
+<div class="card">
+<h3 class="card-title">全套+网站构建运营</h3>
+<div class="price">价格面议</div>
+<ul>
+<li>全套生产力版基础</li>
+<li>网站构建与运营支持</li>
+<li>按需定制功能</li>
+</ul>
+<a href="tel:19902364771" class="btn">咨询定制</a>
+</div>
+
+<!-- 落地定制版 -->
+<div class="card">
+<h3 class="card-title">全套+落地场景定制</h3>
+<div class="price">价格面议</div>
+<ul>
+<li>全套生产力版基础</li>
+<li>行业落地生产力定制</li>
+<li>一对一方案设计</li>
+</ul>
+<a href="tel:19902364771" class="btn">咨询定制</a>
+</div>
+
+</div>
+
+<footer>
+<p>© 2026 AI Token算力平台 | 科技赋能生产力 | 咨询热线：19902364771</p>
+</footer>
+</div>
+
+<script>
+document.querySelectorAll('.card').forEach((card,i)=>{
+card.style.animation=`float 6s ease-in-out infinite`
+card.style.animationDelay=`${i*0.5}s`
+})
+const style=document.createElement('style')
+style.textContent=`@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}`
+document.head.appendChild(style)
+</script>
+</body>
+</html>
