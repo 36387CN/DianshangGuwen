@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>一人公司孵化营 | 永久福利与全球企业库</title>
+    <!-- Font Awesome 6 (保留图标库) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ========== 全局样式 & 重置 (仅保留页面基础与底部区域所需) ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f4f7fc;
+            color: #1e2a3e;
+            line-height: 1.5;
+            padding: 0 20px 40px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* ========== 底部福利专属样式（完全保留原设计） ========== */
+        .benefits-footer {
+            margin-top: 2.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafd 100%);
+            border-radius: 32px;
+            padding: 2rem 1.8rem;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+            border: 1px solid #e2edf7;
+        }
+        .benefits-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1a4c6e;
+            margin-bottom: 1.8rem;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+        .benefits-title i {
+            font-size: 2rem;
+            color: #f5b042;
+        }
+        .benefits-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.8rem;
+            margin-bottom: 2rem;
+        }
+        .benefit-card {
+            flex: 1;
+            min-width: 220px;
+            background: white;
+            border-radius: 28px;
+            padding: 1.6rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            border: 1px solid #eef2f8;
+            transition: transform 0.2s;
+        }
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            border-color: #cde0ed;
+        }
+        .benefit-icon {
+            font-size: 2.4rem;
+            color: #1f6392;
+            margin-bottom: 1rem;
+        }
+        .benefit-card h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0f3b54;
+            margin-bottom: 0.6rem;
+        }
+        .benefit-card p {
+            font-size: 0.9rem;
+            color: #4a6f8a;
+            line-height: 1.4;
+        }
+        .benefits-cta {
+            text-align: center;
+            margin-top: 0.8rem;
+        }
+        .benefits-cta a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #1f6392;
+            color: white;
+            padding: 10px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+            box-shadow: 0 4px 8px rgba(31,99,146,0.2);
+            cursor: pointer;
+        }
+        .benefits-cta a:hover {
+            background: #0e4f74;
+            transform: scale(1.02);
+        }
+        .copyright-row {
+            text-align: center;
+            margin-top: 1.8rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #dce5ec;
+            font-size: 0.8rem;
+            color: #6b8eaa;
+        }
+
+        /* ========== 模态框样式（微信收款码 + 微信号） ========== */
+        .payment-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+        }
+        .modal-content {
+            background: #fff;
+            max-width: 380px;
+            width: 90%;
+            border-radius: 32px;
+            text-align: center;
+            padding: 1.8rem 1.5rem 2rem;
+            box-shadow: 0 25px 40px rgba(0,0,0,0.2);
+            position: relative;
+            animation: fadeInUp 0.25s ease-out;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 18px;
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: #8b9aab;
+            transition: color 0.2s;
+            line-height: 1;
+        }
+        .modal-close:hover {
+            color: #1f6392;
+        }
+        .modal-icon {
+            font-size: 2.4rem;
+            color: #2c7cb6;
+            margin-bottom: 0.8rem;
+        }
+        .modal-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a4c6e;
+            margin-bottom: 0.5rem;
+        }
+        .qr-container {
+            background: #ffffff;
+            padding: 12px;
+            border-radius: 24px;
+            margin: 1rem 0;
+            display: inline-block;
+            border: 1px solid #eef2f8;
+        }
+        .qr-img {
+            width: 250px;
+            height: 250px;
+            display: block;
+            margin: 0 auto;
+            background: #f8fafc;
+            border-radius: 16px;
+            object-fit: cover;
+        }
+        .wechat-id {
+            background: #f1f5f9;
+            border-radius: 60px;
+            padding: 10px 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #1e4663;
+            margin: 0.8rem 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .wechat-id i {
+            font-size: 1.2rem;
+            color: #2c9b77;
+        }
+        .copy-btn {
+            background: #eef2f6;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #1f6392;
+            font-weight: 500;
+        }
+        .copy-btn:hover {
+            background: #d4dfe8;
+        }
+        .modal-note {
+            font-size: 0.75rem;
+            color: #6b8eaa;
+            margin-top: 12px;
+        }
+        @media (max-width: 480px) {
+            .modal-content {
+                padding: 1.2rem 1rem 1.5rem;
+            }
+            .qr-img {
+                width: 160px;
+                height: 160px;
+            }
+            .wechat-id {
+                font-size: 0.85rem;
+            }
+            .benefits-title {
+                font-size: 1.3rem;
+            }
+        }
+        @media (max-width: 680px) {
+            body {
+                padding: 0 12px 30px;
+            }
+            .benefits-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            .benefit-card {
+                width: 100%;
+                max-width: 320px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- ================= 底部福利区域（仅保留的核心区块） ================= -->
+    <div class="benefits-footer">
+        <div class="benefits-title">
+            <i class="fas fa-rocket"></i> 
+            <span>加入一人公司孵化营，获得3大永久福利</span>
+            <i class="fas fa-gem"></i>
+        </div>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-infinity"></i></div>
+                <h4>永久免费使用token</h4>
+                <p>AI调用额度永不过期，赋能一人公司自动化运营</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-database"></i></div>
+                <h4>共享全球企业信息库</h4>
+                <p>海量海外企业名录、海关数据实时更新，精准拓客</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-microchip"></i></div>
+                <h4>一人公司全套AI系统及主机</h4>
+                <p>轻量化AI工具链 + 本地主机，零基础快速起步</p>
+            </div>
+        </div>
+        <div class="benefits-cta">
+            <a id="openPaymentModalBtn"><i class="fas fa-hand-peace"></i> 立即了解详情 →</a>
+        </div>
+        <div class="copyright-row">
+            <i class="fas fa-chart-line"></i> 数据持续更新 · 链接直达全球名录 · 建议配合LinkedIn/谷歌深度背调<br>
+            © 外贸拓客工具集 | 助您精准开发全球客户
+        </div>
+    </div>
+</div>
+
+<!-- 微信收款码 + 微信号 模态框（点击按钮弹出，保留完整功能） -->
+<div id="paymentModal" class="payment-modal">
+    <div class="modal-content">
+        <span class="modal-close" id="closeModalBtn">&times;</span>
+        <div class="modal-icon"><i class="fab fa-weixin"></i></div>
+        <div class="modal-title">加入一人公司孵化营<br>请支付 ¥3500</div>
+        <div class="qr-container">
+            <!-- 微信收款二维码（永久权益专属） -->
+            <img id="wechatQrImg" class="qr-img" src="https://1rengs.com/img/wechat-pay.jpg" alt="微信收款码">
+        </div>
+        <div class="wechat-id">
+            <i class="fab fa-weixin"></i> 微信号：<strong>19902364771</strong>
+            <button class="copy-btn" id="copyWechatBtn"><i class="far fa-copy"></i> 复制</button>
+        </div>
+        <div class="modal-note">
+            <i class="fas fa-info-circle"></i> 请使用微信扫码或添加微信号，备注“孵化营”<br>付款后即可获得三大永久权益
+        </div>
+    </div>
+</div>
+
+<script>
+    // ========== 纯底部福利专用交互：模态框打开/关闭 + 复制微信号 ==========
+    (function() {
+        // 获取元素
+        const modal = document.getElementById("paymentModal");
+        const openBtn = document.getElementById("openPaymentModalBtn");
+        const closeBtn = document.getElementById("closeModalBtn");
+        const copyBtn = document.getElementById("copyWechatBtn");
+        const wechatId = "19902364771";
+
+        // 打开模态框
+        if (openBtn) {
+            openBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                if (modal) modal.style.display = "flex";
+            });
+        }
+
+        // 关闭模态框：点击X
+        if (closeBtn) {
+            closeBtn.addEventListener("click", () => {
+                if (modal) modal.style.display = "none";
+            });
+        }
+
+        // 点击模态框背景关闭
+        if (modal) {
+            window.addEventListener("click", (e) => {
+                if (e.target === modal) modal.style.display = "none";
+            });
+        }
+
+        // 复制微信号功能
+        if (copyBtn) {
+            copyBtn.addEventListener("click", () => {
+                navigator.clipboard.writeText(wechatId).then(() => {
+                    const originalText = copyBtn.innerHTML;
+                    copyBtn.innerHTML = '<i class="fas fa-check"></i> 已复制';
+                    setTimeout(() => {
+                        copyBtn.innerHTML = originalText;
+                    }, 1500);
+                }).catch(() => {
+                    alert("无法自动复制，请手动添加微信号：" + wechatId);
+                });
+            });
+        }
+    })();
+</script>
+</body>
+</html>
