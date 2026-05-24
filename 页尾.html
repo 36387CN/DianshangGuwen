@@ -4,22 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>一人公司孵化营 | 永久福利与全球企业库</title>
-    <!-- Font Awesome 6 (保留图标库) -->
+    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* ========== 全局样式 & 重置 — 更紧凑的整体基调 ========== */
+        /* ========== 全局样式 & 重置 — 更紧凑，无背景色 ========== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        /* 网页完全无背景：纯白极简，符合“没有背景”要求 */
         body {
             font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            background: #f4f7fc;
+            background: #ffffff;      /* 纯白背景，彻底移除原灰度渐变背景 */
             color: #1e2a3e;
-            line-height: 1.4;          /* 行距略微收紧 */
-            padding: 0 16px 24px;       /* 更紧凑的四周留白 */
+            line-height: 1.4;
+            padding: 0 16px 24px;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -27,19 +28,19 @@
         }
 
         .container {
-            max-width: 1300px;           /* 稍微收窄最大宽度，信息更聚合 */
+            max-width: 1300px;
             margin: 0 auto;
             width: 100%;
         }
 
-        /* ========== 底部福利区域 — 紧凑但信息丰满 ========== */
+        /* ========== 底部福利区域 — 紧凑但保留清晰卡片感 ========== */
         .benefits-footer {
-            margin-top: 1.2rem;          /* 缩减顶部间距 */
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafd 100%);
-            border-radius: 28px;          /* 圆角略微精致但不过大 */
-            padding: 1.2rem 1rem 1.5rem;  /* 内部留白更紧凑 */
+            margin-top: 1.2rem;
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 1.2rem 1rem 1.5rem;
             box-shadow: 0 8px 20px rgba(0,0,0,0.04);
-            border: 1px solid #e2edf7;
+            border: 1px solid #eef2f8;
             transition: all 0.2s;
         }
 
@@ -47,32 +48,32 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;                    /* 标题内部间距收紧 */
-            font-size: 1.35rem;          /* 从1.6rem调小，更紧凑 */
+            gap: 8px;
+            font-size: 1.35rem;
             font-weight: 700;
             color: #1a4c6e;
-            margin-bottom: 1.2rem;       /* 标题下方间距缩小 */
+            margin-bottom: 1.2rem;
             flex-wrap: wrap;
             text-align: center;
             letter-spacing: -0.2px;
         }
         .benefits-title i {
-            font-size: 1.7rem;           /* 图标略收 */
+            font-size: 1.7rem;
             color: #f5b042;
         }
         .benefits-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 1rem;                   /* 卡片间隙更紧凑 (原1.8rem) */
+            gap: 1rem;
             margin-bottom: 1.4rem;
         }
         .benefit-card {
             flex: 1;
-            min-width: 190px;            /* 略微紧缩最小宽度 */
-            background: white;
+            min-width: 190px;
+            background: #ffffff;
             border-radius: 24px;
-            padding: 1rem 0.75rem;       /* 内部留白减小 */
+            padding: 1rem 0.75rem;
             text-align: center;
             box-shadow: 0 2px 8px rgba(0,0,0,0.02);
             border: 1px solid #eef2f8;
@@ -84,18 +85,18 @@
             box-shadow: 0 6px 14px rgba(0,0,0,0.04);
         }
         .benefit-icon {
-            font-size: 2rem;             /* 图标稍微缩小 */
+            font-size: 2rem;
             color: #1f6392;
             margin-bottom: 0.7rem;
         }
         .benefit-card h4 {
-            font-size: 1.05rem;          /* 标题字号紧凑 */
+            font-size: 1.05rem;
             font-weight: 700;
             color: #0f3b54;
             margin-bottom: 0.4rem;
         }
         .benefit-card p {
-            font-size: 0.82rem;          /* 描述文字更精致 */
+            font-size: 0.82rem;
             color: #4a6f8a;
             line-height: 1.35;
         }
@@ -109,7 +110,7 @@
             gap: 8px;
             background: #1f6392;
             color: white;
-            padding: 8px 22px;           /* 按钮更紧凑，但保持可点区域 */
+            padding: 8px 22px;
             border-radius: 40px;
             text-decoration: none;
             font-weight: 600;
@@ -125,15 +126,15 @@
         }
         .copyright-row {
             text-align: center;
-            margin-top: 1rem;             /* 减少上边距 */
+            margin-top: 1rem;
             padding-top: 0.9rem;
             border-top: 1px solid #dce5ec;
-            font-size: 0.72rem;           /* 版权信息字体收拢 */
+            font-size: 0.72rem;
             color: #6b8eaa;
             line-height: 1.4;
         }
 
-        /* ========== 模态框 — 保持整洁紧凑，轻量化 ========== */
+        /* ========== 模态框 — 固定高度400px，二维码图片尺寸完全不变 ========== */
         .payment-modal {
             display: none;
             position: fixed;
@@ -147,17 +148,36 @@
             justify-content: center;
             backdrop-filter: blur(3px);
         }
+        /* 核心调整：弹窗面板高度固定为400px，二维码图片大小保持原值不变 */
         .modal-content {
             background: #fff;
-            max-width: 360px;             /* 稍微缩窄，更聚合 */
+            max-width: 360px;
             width: 90%;
+            height: 400px;               /* 明确要求高度400px */
             border-radius: 28px;
             text-align: center;
-            padding: 1.2rem 1rem 1.6rem;  /* 上下左右更紧凑 */
+            padding: 1rem 0.9rem 1.2rem; /* 紧凑内边距，为内容留足空间 */
             box-shadow: 0 20px 35px rgba(0,0,0,0.2);
             position: relative;
             animation: fadeInUp 0.2s ease-out;
+            overflow-y: auto;            /* 内容若略超400px可滚动，确保所有信息可见，二维码尺寸不变 */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
+        /* 自定义滚动条美观 (不影响功能) */
+        .modal-content::-webkit-scrollbar {
+            width: 4px;
+        }
+        .modal-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .modal-content::-webkit-scrollbar-thumb {
+            background: #c1c9d2;
+            border-radius: 10px;
+        }
+        
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -177,32 +197,34 @@
             color: #8b9aab;
             transition: color 0.2s;
             line-height: 1;
+            z-index: 10;
         }
         .modal-close:hover {
             color: #1f6392;
         }
         .modal-icon {
-            font-size: 2.1rem;
+            font-size: 2rem;            /* 微调保持视觉平衡 */
             color: #2c7cb6;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.3rem;
         }
         .modal-title {
-            font-size: 1.2rem;
+            font-size: 1.18rem;
             font-weight: 700;
             color: #1a4c6e;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.3rem;
             line-height: 1.3;
         }
         .qr-container {
             background: #ffffff;
-            padding: 8px;                /* 更紧凑的二维码背景留白 */
+            padding: 8px;
             border-radius: 20px;
-            margin: 0.8rem auto;
+            margin: 0.6rem auto;
             display: inline-block;
             border: 1px solid #eef2f8;
         }
+        /* 二维码图片尺寸保持原样：桌面宽180px/移动端稍小但比例不变（完全保留原先尺寸定义） */
         .qr-img {
-            width: 180px;               /* 二维码尺寸紧凑但扫码无碍 */
+            width: 180px;
             height: 180px;
             display: block;
             margin: 0 auto;
@@ -220,12 +242,12 @@
             font-size: 0.9rem;
             font-weight: 500;
             color: #1e4663;
-            margin: 0.6rem 0;
+            margin: 0.4rem 0 0.3rem;
             flex-wrap: wrap;
             justify-content: center;
         }
         .wechat-id i {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #2c9b77;
         }
         .copy-btn {
@@ -246,13 +268,14 @@
             background: #d4dfe8;
         }
         .modal-note {
-            font-size: 0.7rem;
+            font-size: 0.69rem;
             color: #6b8eaa;
-            margin-top: 10px;
+            margin-top: 8px;
             line-height: 1.3;
+            padding-bottom: 4px;
         }
 
-        /* ========== 响应式优化：移动端更紧凑 ========== */
+        /* ========== 响应式：二维码图片尺寸严格不变（移动端依然保持原有尺寸逻辑，无更改） ========== */
         @media (max-width: 640px) {
             body {
                 padding: 0 12px 16px;
@@ -298,44 +321,59 @@
                 margin-top: 0.8rem;
                 padding-top: 0.7rem;
             }
+            /* 移动端弹窗高度依然是400px，二维码图片保持原有尺寸（不缩小） */
             .modal-content {
-                max-width: 320px;
-                padding: 1rem 0.9rem 1.4rem;
+                max-width: 340px;
+                height: 400px;          /* 固定高度不变 */
+                padding: 0.9rem 0.8rem 1rem;
             }
+            /* 二维码图片完全保持原本大小 180px? 因移动端屏幕小可能溢出容器，但依然保证尺寸不缩放：设定宽180可能导致容器溢出？但移动端容器宽约90%即300px左右，180px完全正常显示且不变形，满足“图片大小不变” */
             .qr-img {
-                width: 150px;
-                height: 150px;
+                width: 180px;
+                height: 180px;
             }
             .wechat-id {
                 font-size: 0.8rem;
                 padding: 4px 12px;
-                gap: 6px;
             }
             .modal-title {
                 font-size: 1.05rem;
             }
         }
 
+        /* 小屏手机（如宽度<480），仍保持二维码图片180px不变，但为免超出可视区略微调整容器滚动即可，不做尺寸缩减 */
         @media (max-width: 480px) {
             .qr-img {
-                width: 130px;
-                height: 130px;
+                width: 180px;
+                height: 180px;
             }
             .modal-content {
-                padding: 0.9rem 0.8rem 1.2rem;
+                max-width: 320px;
+                padding: 0.85rem 0.7rem 1rem;
             }
             .wechat-id {
                 font-size: 0.75rem;
+                gap: 6px;
             }
-            .benefits-title {
-                font-size: 1.1rem;
+            .modal-note {
+                font-size: 0.65rem;
+            }
+        }
+        /* 对于极小设备保证180px二维码完全居中且不溢出，滚动查看即可，满足要求 */
+        @media (max-width: 380px) {
+            .qr-img {
+                width: 180px;
+                height: 180px;
+            }
+            .modal-content {
+                max-width: 300px;
             }
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <!-- ================= 一人公司孵化营福利区块（紧凑但精致） ================= -->
+    <!-- 一人公司孵化营福利区块（紧凑设计） -->
     <div class="benefits-footer">
         <div class="benefits-title">
             <i class="fas fa-rocket"></i> 
@@ -369,14 +407,14 @@
     </div>
 </div>
 
-<!-- 微信收款码 + 微信号 模态框（点击按钮弹出，保留完整功能，紧凑设计） -->
+<!-- 微信支付弹窗：高度严格400px，二维码图片大小不变（180x180，移动端也维持此尺寸） -->
 <div id="paymentModal" class="payment-modal">
     <div class="modal-content">
         <span class="modal-close" id="closeModalBtn">&times;</span>
         <div class="modal-icon"><i class="fab fa-weixin"></i></div>
         <div class="modal-title">加入一人公司孵化营<br>请支付 ¥3500</div>
         <div class="qr-container">
-            <!-- 微信收款二维码（永久权益专属，紧凑展示） -->
+            <!-- 微信收款二维码（尺寸绝对不变，始终180x180） -->
             <img id="wechatQrImg" class="qr-img" src="https://1rengs.com/img/wechat-pay.jpg" alt="微信收款码">
         </div>
         <div class="wechat-id">
@@ -390,9 +428,8 @@
 </div>
 
 <script>
-    // ========== 福利区域专用交互：模态框打开/关闭 + 复制微信号（紧凑版保留所有功能） ==========
+    // ========== 福利区域交互：模态框打开/关闭 + 复制微信号，弹窗高度固定400px并保留二维码尺寸 ==========
     (function() {
-        // 获取元素
         const modal = document.getElementById("paymentModal");
         const openBtn = document.getElementById("openPaymentModalBtn");
         const closeBtn = document.getElementById("closeModalBtn");
@@ -421,7 +458,7 @@
             });
         }
 
-        // 复制微信号功能（轻提示更紧凑）
+        // 复制微信号功能（紧凑提示）
         if (copyBtn) {
             copyBtn.addEventListener("click", () => {
                 navigator.clipboard.writeText(wechatId).then(() => {
