@@ -224,8 +224,8 @@
         }
         /* 二维码图片尺寸保持原样：桌面宽180px/移动端稍小但比例不变（完全保留原先尺寸定义） */
         .qr-img {
-            width: 180px;
-            height: 180px;
+            width: 220px;
+            height: 220px;
             display: block;
             margin: 0 auto;
             background: #f8fafc;
@@ -407,14 +407,14 @@
     </div>
 </div>
 
-<!-- 微信支付弹窗：高度严格400px，二维码图片大小不变（180x180，移动端也维持此尺寸） -->
+<!-- 微信支付弹窗：高度严格400px，二维码图片大小不变（220x220，移动端也维持此尺寸） -->
 <div id="paymentModal" class="payment-modal">
     <div class="modal-content">
         <span class="modal-close" id="closeModalBtn">&times;</span>
         <div class="modal-icon"><i class="fab fa-weixin"></i></div>
         <div class="modal-title">加入一人公司孵化营<br>请支付 ¥3500</div>
         <div class="qr-container">
-            <!-- 微信收款二维码（尺寸绝对不变，始终180x180） -->
+            <!-- 微信收款二维码（尺寸绝对不变，始终220x220） -->
             <img id="wechatQrImg" class="qr-img" src="https://1rengs.com/img/wechat-pay.jpg" alt="微信收款码">
         </div>
         <div class="wechat-id">
@@ -422,7 +422,7 @@
             <button class="copy-btn" id="copyWechatBtn"><i class="far fa-copy"></i> 复制</button>
         </div>
         <div class="modal-note">
-            <i class="fas fa-info-circle"></i> 请使用微信扫码或添加微信号，备注“孵化营”<br>付款后即可获得三大永久权益
+            <i class="fas fa-info-circle"></i> 请使用微信扫码或添加微信号，备注“孵化营”
         </div>
     </div>
 </div>
