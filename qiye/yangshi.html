@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>杨氏冻干 30天</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Inter","Noto Sans SC",sans-serif;background:#0a0a1a;color:#e0e0e0;line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,#0a0a1a,#1a1a3e,#0d0d2b);padding:50px 0 40px;border-bottom:1px solid rgba(255,255,255,0.06);position:relative}
+.hero::after{content:"";position:absolute;top:0;right:0;width:300px;height:300px;background:radial-gradient(circle,rgba(255,215,0,0.06),transparent 70%)}
+.hero h1{font-size:32px;font-weight:900;background:linear-gradient(135deg,#fff,#ffd700);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px}
+.hero .sub{font-size:15px;color:rgba(255,255,255,0.5)}
+.hero-stats{display:flex;flex-wrap:wrap;gap:16px;margin-top:20px}
+.hero-stat{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px 20px;min-width:120px}
+.hero-stat .num{font-size:22px;font-weight:800;color:#ffd700}
+.hero-stat .lbl{font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:100;background:rgba(10,10,26,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,0.06);padding:8px 0}
+.nav-inner{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav a{white-space:nowrap;padding:7px 14px;font-size:12px;font-weight:500;color:rgba(255,255,255,0.5);text-decoration:none;border-radius:6px;transition:all 0.2s}
+.nav a:hover{background:rgba(255,255,255,0.08);color:#fff}
+
+/* Sections */
+.section{padding:36px 0}
+.section-header{margin-bottom:24px}
+.section-header .badge{display:inline-block;padding:4px 12px;border-radius:6px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px}
+.section-header h2{font-size:22px;font-weight:800;color:#fff}
+.section-header p{font-size:13px;color:rgba(255,255,255,0.4);margin-top:4px}
+
+/* Cards */
+.card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:20px}
+.card:hover{border-color:rgba(255,215,0,0.15)}
+.card .lbl{font-size:11px;font-weight:600;text-transform:uppercase;color:rgba(255,255,255,0.3);letter-spacing:0.5px;margin-bottom:6px}
+.card .val{font-size:15px;font-weight:600;color:#fff}
+.card .sub{font-size:12px;color:rgba(255,255,255,0.35);margin-top:4px}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid-4{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+
+/* Tables */
+.table-wrap{overflow-x:auto;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{padding:10px 14px;text-align:left;font-weight:600;color:rgba(255,255,255,0.5);border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02)}
+td{padding:9px 14px;border-bottom:1px solid rgba(255,255,255,0.04);color:rgba(255,255,255,0.8)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(255,255,255,0.03)}
+
+/* Tags */
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+.tag-gold{background:rgba(255,215,0,0.15);color:#ffd700}
+.tag-red{background:rgba(239,68,68,0.15);color:#ef4444}
+.tag-green{background:rgba(34,197,94,0.15);color:#22c55e}
+.tag-blue{background:rgba(59,130,246,0.15);color:#3b82f6}
+.tag-purple{background:rgba(168,85,247,0.15);color:#a855f7}
+
+/* Alert */
+.alert{display:flex;align-items:flex-start;gap:12px;padding:14px 18px;border-radius:8px;margin:16px 0;font-size:13px}
+.alert-gold{background:rgba(255,215,0,0.06);border:1px solid rgba(255,215,0,0.15);color:rgba(255,215,0,0.8)}
+.alert-red{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);color:#ef4444}
+.alert-blue{background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.15);color:#3b82f6}
+
+/* Timeline */
+.tl{position:relative;padding-left:28px}
+.tl::before{content:"";position:absolute;left:8px;top:0;bottom:0;width:1px;background:rgba(255,255,255,0.08)}
+.tl-item{position:relative;margin-bottom:16px;padding:16px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:10px}
+.tl-item::before{content:"";position:absolute;left:-22px;top:20px;width:10px;height:10px;border-radius:50%;background:#ffd700;border:2px solid #0a0a1a;box-shadow:0 0 0 2px rgba(255,215,0,0.3)}
+.tl-item .wk{font-size:12px;font-weight:700;color:#ffd700;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px}
+.tl-item .task{padding:3px 0;font-size:13px;color:rgba(255,255,255,0.7);padding-left:12px;position:relative}
+.tl-item .task::before{content:"→";position:absolute;left:0;color:rgba(255,215,0,0.5)}
+
+/* KPI */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.kpi-card{text-align:center;padding:24px;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06)}
+.kpi-card .num{font-size:32px;font-weight:900;color:#ffd700}
+.kpi-card .lbl{font-size:13px;color:rgba(255,255,255,0.5);margin-top:4px}
+.kpi-card .sub{font-size:11px;color:rgba(255,255,255,0.25);margin-top:2px}
+
+/* Progress */
+.progress{background:rgba(255,255,255,0.06);border-radius:4px;height:6px;overflow:hidden;margin:6px 0}
+.progress .fill{height:100%;border-radius:4px;background:linear-gradient(90deg,#ffd700,#f59e0b)}
+
+/* Channel cards */
+.ch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.ch-card{padding:18px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:10px}
+.ch-card .pct{font-size:28px;font-weight:900;color:#ffd700}
+.ch-card .ch-name{font-size:14px;font-weight:600;color:#fff;margin:4px 0}
+.ch-card .ch-budget{font-size:12px;color:rgba(255,255,255,0.3)}
+.ch-card li{padding:3px 0;font-size:12px;color:rgba(255,255,255,0.55);list-style:none;padding-left:10px;position:relative}
+.ch-card li::before{content:"▸";position:absolute;left:0;color:#ffd700;font-size:10px}
+
+/* Day grid */
+.day-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.day-cell{padding:10px;border-radius:6px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);font-size:12px}
+.day-cell .d{font-weight:700;color:#ffd700;margin-bottom:4px}
+.day-cell .t{color:rgba(255,255,255,0.5);font-size:11px}
+
+/* Checkbox list */
+.checklist li{padding:5px 0;font-size:13px;color:rgba(255,255,255,0.7);list-style:none;padding-left:20px;position:relative}
+.checklist li::before{content:"";position:absolute;left:0;top:8px;width:12px;height:12px;border:1.5px solid rgba(255,255,255,0.2);border-radius:3px}
+
+/* Footer */
+.footer{text-align:center;padding:24px 0;font-size:12px;color:rgba(255,255,255,0.2);border-top:1px solid rgba(255,255,255,0.04)}
+
+/* Responsive */
+@media(max-width:768px){
+.hero h1{font-size:24px}
+.grid-2{grid-template-columns:1fr}
+.day-grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+<div class="container">
+<h1>⚡ 杨氏冻干 · 30天  冲刺作战手册</h1>
+<p class="sub">Yangshi Freeze-Drying — 从 Alibaba 店铺诊断到 30天成交 ,000 的全链路执行方案</p>
+<div class="hero-stats">
+<div class="hero-stat"><div class="num"></div><div class="lbl">30天目标</div></div>
+<div class="hero-stat"><div class="num">,333</div><div class="lbl">日均成交</div></div>
+<div class="hero-stat"><div class="num">,280</div><div class="lbl">总预算</div></div>
+<div class="hero-stat"><div class="num">23x</div><div class="lbl">目标ROI</div></div>
+<div class="hero-stat"><div class="num">4</div><div class="lbl">核心产品线</div></div>
+</div>
+</div>
+</section>
+
+<nav class="nav">
+<div class="container nav-inner">
+<a href="#day0">📋 作战地图</a>
+<a href="#products">🎯 产品拆解</a>
+<a href="#traffic">📡 流量渠道</a>
+<a href="#pricing">💰 定价引擎</a>
+<a href="#exec">🏃 每日执行</a>
+<a href="#kpi">📊 目标看板</a><a href="#team">👥 团队</a>
+</div>
+</nav>
+
+<!-- D0: Battle Plan -->
+<section class="section" id="day0">
+<div class="container">
+<div class="section-header">
+<div class="badge" style="background:rgba(255,215,0,0.1);color:#ffd700">📍 作战地图</div>
+<h2>第0天 · 现状诊断与资源盘点</h2>
+<p>先确认资源到位再开战</p>
+</div>
+
+<div class="alert alert-red"><i class="fas fa-exclamation-circle"></i><div><strong>必须确认（否则不动）：</strong> Trade Assurance 是否开通？如果没有，任何优化都无法成交。立即去 Alibaba 后台确认开通。</div></div>
+
+<div class="grid-3">
+<div class="card">
+<div class="lbl">产品就绪</div>
+<div class="val"><span class="tag tag-red">待确认</span> MKK慢榨汁机 标题/主图/视频</div>
+<div class="sub">当前标题缺少电压/认证/场景关键词</div>
+<div class="progress"><div class="fill" style="width:20%"></div></div>
+</div>
+<div class="card">
+<div class="lbl">流量就绪</div>
+<div class="val"><span class="tag tag-red">待确认</span> P4P账户、社媒账号</div>
+<div class="sub">P4P开户1天，TikTok/IG/LinkedIn开户即时</div>
+<div class="progress"><div class="fill" style="width:10%"></div></div>
+</div>
+<div class="card">
+<div class="lbl">团队就绪</div>
+<div class="val"><span class="tag tag-red">待确认</span> 运营/销售/拍摄</div>
+<div class="sub">至少需要1运营+1销售+1拍摄</div>
+<div class="progress"><div class="fill" style="width:15%"></div></div>
+</div>
+</div>
+
+<h3 style="font-size:15px;color:#ffd700;margin:16px 0 10px">🎯 核心策略：以高打低，以快打慢</h3>
+<div class="grid-3">
+<div class="card" style="border-left:3px solid #ffd700">
+<div class="lbl">第1招</div>
+<div class="val">MKK慢榨汁机做锚点</div>
+<div class="sub">高客单（-）带动店铺整体GMV，单笔利润最高</div>
+</div>
+<div class="card" style="border-left:3px solid #22c55e">
+<div class="lbl">第2招</div>
+<div class="val">冻干茶粉做爆款引流</div>
+<div class="sub">低客单（-）快速起量+积累评价</div>
+</div>
+<div class="card" style="border-left:3px solid #3b82f6">
+<div class="lbl">第3招</div>
+<div class="val">RFQ+EDM做精准转化</div>
+<div class="sub">免费流量精准触达采购商，免费样品降低决策门槛</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Products -->
+<section class="section" id="products">
+<div class="container">
+<div class="section-header">
+<div class="badge" style="background:rgba(34,197,94,0.1);color:#22c55e">🎯 产品拆解</div>
+<h2>产品线目标拆解与优化项</h2>
+</div>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>产品线</th><th>保守目标</th><th>激进目标</th><th>客单价</th><th>需成交量</th><th>策略角色</th></tr></thead>
+<tbody>
+<tr>
+<td><strong>MKK慢榨汁机</strong></td>
+<td>,000</td>
+<td>,000</td>
+<td>-</td>
+<td>~200-300台</td>
+<td><span class="tag tag-gold">核心爆款</span></td>
+</tr>
+<tr>
+<td><strong>冻干茶/茶粉</strong></td>
+<td>,000</td>
+<td>,000</td>
+<td>-/kg</td>
+<td>~600-1300kg</td>
+<td><span class="tag tag-green">引流品</span></td>
+</tr>
+<tr>
+<td><strong>冻干果蔬/零食</strong></td>
+<td>,000</td>
+<td>,000</td>
+<td>-</td>
+<td>~700-1500kg</td>
+<td><span class="tag tag-blue">利润品</span></td>
+</tr>
+<tr>
+<td><strong>冻干设备</strong></td>
+<td>,000</td>
+<td>,000</td>
+<td>-</td>
+<td>~2-5台</td>
+<td><span class="tag tag-purple">大单品</span></td>
+</tr>
+<tr>
+<td><strong>OEM定制</strong></td>
+<td>,000</td>
+<td></td>
+<td>-</td>
+<td>~1-3单</td>
+<td><span class="tag tag-gold">弹性增量</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="alert alert-blue" style="margin-top:16px"><i class="fas fa-lightbulb"></i><div><strong>实现：</strong> 1个大单（冻干设备/OEM -25K）+ 3-5个中型批发单（慢榨汁机100-300台 -25K）+ 若干样品小单持续走量 = 达到目标</div></div>
+
+<h3 style="font-size:15px;color:#fff;margin:20px 0 10px">📝 今日必须完成的优化任务（Day 1）</h3>
+<div class="grid-2">
+<div style="padding:14px;background:rgba(255,215,0,0.04);border-radius:8px;border:1px solid rgba(255,215,0,0.1)">
+<div style="font-weight:600;color:#ffd700;margin-bottom:8px">MKK慢榨汁机</div>
+<div class="checklist">
+<li>标题重写（添加电压/材质/认证/场景）</li>
+<li>关键词字段填满（核心+长尾共30个）</li>
+<li>上传6-8张主图（白底/拆解/场景/认证）</li>
+<li>拍摄/上传30秒操作视频</li>
+<li>设置阶梯价格（样品/批发/大批/工厂）</li>
+<li>开通Trade Assurance</li>
+</div>
+</div>
+<div style="padding:14px;background:rgba(34,197,94,0.04);border-radius:8px;border:1px solid rgba(34,197,94,0.1)">
+<div style="font-weight:600;color:#22c55e;margin-bottom:8px">冻干茶粉 / 冻干水果</div>
+<div class="checklist">
+<li>标题重写（覆盖核心关键词）</li>
+<li>上架至少5个SPU（茶粉/果蔬/零食各规格）</li>
+<li>设置MOQ和阶梯价</li>
+<li>上传实物图+包装图</li>
+<li>填写详细描述（工艺/用途/认证）</li>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Traffic Channels -->
+<section class="section" id="traffic">
+<div class="container">
+<div class="section-header">
+<div class="badge" style="background:rgba(59,130,246,0.1);color:#3b82f6">📡 流量渠道</div>
+<h2>5大流量渠道 · 日目标1,200+流量</h2>
+</div>
+
+<div class="ch-grid">
+<div class="ch-card">
+<div class="pct">30%</div>
+<div class="ch-name">Alibaba P4P + RFQ</div>
+<div class="ch-budget">,200/月 · 核心渠道</div>
+<li>P4P：core词卡前5，长尾词精准匹配</li>
+<li>每日50条RFQ报价（免费流量）</li>
+<li>粉丝通每周3条动态</li>
+<li>产品橱窗锁定TOP3</li>
+<li><strong style="color:#ffd700">第一周必做</strong></li>
+</div>
+<div class="ch-card">
+<div class="pct">25%</div>
+<div class="ch-name">TikTok / Instagram / LinkedIn</div>
+<div class="ch-budget">/月 · 内容驱动</div>
+<li>每天1-2条短视频（产品演示/效果展示）</li>
+<li>LinkedIn B2B内容+群组</li>
+<li>Hashtag：freezedried #commercialkitchen</li>
+<li><strong style="color:#ffd700">第二周起量</strong></li>
+</div>
+<div class="ch-card">
+<div class="pct">20%</div>
+<div class="ch-name">Google + Bing Ads</div>
+<div class="ch-budget">,100/月 · 精准搜索</div>
+<li>Google Ads搜索广告（/月）</li>
+<li>Bing Ads（/月，CPC低30-50%）</li>
+<li>再营销追踪访问过Alibaba页面的用户</li>
+<li><strong style="color:#ffd700">第二周启动</strong></li>
+</div>
+<div class="ch-card">
+<div class="pct">15%</div>
+<div class="ch-name">EDM 邮件营销</div>
+<div class="ch-budget">/月 · 自动化</div>
+<li>拉取Alibaba历史询盘客户</li>
+<li>6步自动化序列（D1目录/D3报价/D7案例/D14折扣/D21更新/D28跟进）</li>
+<li><strong style="color:#ffd700">第10天启动</strong></li>
+</div>
+<div class="ch-card">
+<div class="pct">10%</div>
+<div class="ch-name">Amazon Business + 独立站</div>
+<div class="ch-budget">Shopify /月</div>
+<li>注册Amazon Business Seller</li>
+<li>Shopify展示型独立站</li>
+<li>WhatsApp Business客户群</li>
+<li><strong style="color:#ffd700">第三周上线</strong></li>
+</div>
+</div>
+
+<div class="alert alert-gold" style="margin-top:16px"><i class="fas fa-bolt"></i><div><strong>流量公式：</strong> 日均询盘 = 流量 × 询盘率。目标1,200流量×3%询盘率=36询盘/天。月累计600+询盘，转化率4%=24单=冲刺</div></div>
+</div>
+</section>
+
+<!-- Pricing Engine -->
+<section class="section" id="pricing">
+<div class="container">
+<div class="section-header">
+<div class="badge" style="background:rgba(168,85,247,0.1);color:#a855f7">💰 定价引擎</div>
+<h2>分层定价 · 全渠道阶梯价体系</h2>
+</div>
+
+<div class="grid-2">
+<div style="padding:16px;background:rgba(255,255,255,0.02);border-radius:10px;border:1px solid rgba(255,255,255,0.06)">
+<h4 style="color:#ffd700;margin-bottom:10px;font-size:14px">MKK 商用慢榨汁机</h4>
+<div style="font-size:13px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04)"><span style="color:rgba(255,255,255,0.4)">样品 (1-9台)</span> <span style="float:right;font-weight:700">-</span></div>
+<div style="font-size:13px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(255,215,0,0.04)"><span style="color:rgba(255,255,255,0.4)">批发 (10-49台)</span> <span style="float:right;font-weight:700;color:#ffd700">-</span></div>
+<div style="font-size:13px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04)"><span style="color:rgba(255,255,255,0.4)">大批 (50-199台)</span> <span style="float:right;font-weight:700">-</span></div>
+<div style="font-size:13px;padding:6px 0"><span style="color:rgba(255,255,255,0.4)">工厂 (200+台)</span> <span style="float:right;font-weight:700">-</span></div>
+</div>
+<div style="padding:16px;background:rgba(255,255,255,0.02);border-radius:10px;border:1px solid rgba(255,255,255,0.06)">
+<h4 style="color:#22c55e;margin-bottom:10px;font-size:14px">冻干茶粉 / 冻干水果</h4>
+<div style="font-size:13px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04)"><span style="color:rgba(255,255,255,0.4)">茶粉 500g 样品</span> <span style="float:right">-</span></div>
+<div style="font-size:13px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(34,197,94,0.04)"><span style="color:rgba(255,255,255,0.4)">茶粉 1kg 批发</span> <span style="float:right;font-weight:700;color:#22c55e">-</span></div>
+<div style="font-size:13px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04)"><span style="color:rgba(255,255,255,0.4)">茶粉 10kg 箱装</span> <span style="float:right">-</span></div>
+<div style="font-size:13px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04)"><span style="color:rgba(255,255,255,0.4)">水果 1kg 批发</span> <span style="float:right">-</span></div>
+<div style="font-size:13px;padding:6px 0"><span style="color:rgba(255,255,255,0.4)">水果 10kg 箱装</span> <span style="float:right">-</span></div>
+</div>
+</div>
+
+<div class="alert alert-gold" style="margin-top:16px"><i class="fas fa-gift"></i><div><strong>阶梯折扣引擎：</strong> -3%+样品 → -5%+定制包装 → -8%+优先排产 → -15%+免费海运咨询。客户下单越大，锁得越死。</div></div>
+</div>
+</section>
+
+<!-- Daily Execution -->
+<section class="section" id="exec">
+<div class="container">
+<div class="section-header">
+<div class="badge" style="background:rgba(239,68,68,0.1);color:#ef4444">🏃 每日执行</div>
+<h2>30天拆解到天 · 每天做什么</h2>
+</div>
+
+<div class="tl">
+<div class="tl-item">
+<div class="wk">第1周 · 搭建期 (D1-D7)</div>
+<div class="task" style="color:#ffd700;font-weight:600">核心目标：完成产品页重构 + P4P上线 + RFQ启动</div>
+<div style="margin-top:8px">
+<div class="day-grid">
+<div class="day-cell"><div class="d">D1</div><div class="t">重写所有产品标题+关键词+主图</div></div>
+<div class="day-cell"><div class="d">D2</div><div class="t">更新店铺Banner/分类/公司介绍，确认TA开通</div></div>
+<div class="day-cell"><div class="d">D3</div><div class="t">拍摄慢榨汁机操作视频+冻干茶溶解视频</div></div>
+<div class="day-cell"><div class="d">D4</div><div class="t">P4P开户+设置投放计划，开始报RFQ</div></div>
+<div class="day-cell"><div class="d">D5</div><div class="t">开设TikTok/IG/LinkedIn账号，发首条内容</div></div>
+<div class="day-cell"><div class="d">D6</div><div class="t">搭建Shopify独立站（5页），优化移动端</div></div>
+<div class="day-cell"><div class="d">D7</div><div class="t" style="color:#22c55e"><strong>复盘：P4P数据 / 产品页上线 / 首批内容效果</strong></div></div>
+</div>
+</div>
+</div>
+
+<div class="tl-item">
+<div class="wk">第2周 · 流量启动 (D8-D14)</div>
+<div class="task" style="color:#ffd700;font-weight:600">核心目标：日均流量500+，日均询盘15+</div>
+<div style="margin-top:8px">
+<div class="day-grid">
+<div class="day-cell"><div class="d">D8</div><div class="t">社媒日更启动（每天1条视频）</div></div>
+<div class="day-cell"><div class="d">D9</div><div class="t">P4P数据优化（根据点击率调词）</div></div>
+<div class="day-cell"><div class="d">D10</div><div class="t">EDM第一轮：历史客户+RFQ客户发送目录</div></div>
+<div class="day-cell"><div class="d">D11</div><div class="t">联系5个食品/厨房KOL寄样</div></div>
+<div class="day-cell"><div class="d">D12</div><div class="t">Google Ads开户上线（）</div></div>
+<div class="day-cell"><div class="d">D13</div><div class="t">优化P4P + Google Ads竞价策略</div></div>
+<div class="day-cell"><div class="d">D14</div><div class="t" style="color:#22c55e"><strong>复盘：各渠道流量/询盘/ROI，调优下周</strong></div></div>
+</div>
+</div>
+</div>
+
+<div class="tl-item">
+<div class="wk">第3周 · 放量期 (D15-D21)</div>
+<div class="task" style="color:#ffd700;font-weight:600">核心目标：日均流量800+，日均询盘25+</div>
+<div style="margin-top:8px">
+<div class="day-grid">
+<div class="day-cell"><div class="d">D15</div><div class="t">放量P4P高ROI词（预算+50%）</div></div>
+<div class="day-cell"><div class="d">D16</div><div class="t">Bing Ads上线（）</div></div>
+<div class="day-cell"><div class="d">D17</div><div class="t">LinkedIn精准触达：搜索10个采购经理</div></div>
+<div class="day-cell"><div class="d">D18</div><div class="t">EDM第二轮：发送成功案例+报价</div></div>
+<div class="day-cell"><div class="d">D19</div><div class="t">Google Ads扩量（追加）</div></div>
+<div class="day-cell"><div class="d">D20</div><div class="t">Amazon Business上架MKK慢榨汁机</div></div>
+<div class="day-cell"><div class="d">D21</div><div class="t" style="color:#22c55e"><strong>复盘：转化漏斗分析，追踪所有在谈订单</strong></div></div>
+</div>
+</div>
+</div>
+
+<div class="tl-item">
+<div class="wk">第4周 · 冲刺期 (D22-D30)</div>
+<div class="task" style="color:#ffd700;font-weight:600">核心目标：日均流量1,200+，日均询盘40+，成交</div>
+<div style="margin-top:8px">
+<div class="day-grid">
+<div class="day-cell"><div class="d">D22</div><div class="t">启动月末冲量活动：全店满</div></div>
+<div class="day-cell"><div class="d">D23</div><div class="t">社媒放大：每天3条，追加TikTok </div></div>
+<div class="day-cell"><div class="d">D24</div><div class="t">所有平台广告预算+30%</div></div>
+<div class="day-cell"><div class="d">D25</div><div class="t">WhatsApp逐一跟进未转化询盘（30+客户）</div></div>
+<div class="day-cell"><div class="d">D26</div><div class="t">EDM最终轮：限时折扣+免费样品码</div></div>
+<div class="day-cell"><div class="d">D27-29</div><div class="t">集中跟单+催单+逼单</div></div>
+<div class="day-cell"><div class="d">D30</div><div class="t" style="color:#22c55e"><strong>最终复盘：计算总成交额、各渠道ROI、制定下月计划</strong></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Conversion SOP -->
+<section class="section">
+<div class="container">
+<div class="section-header">
+<div class="badge" style="background:rgba(34,197,94,0.1);color:#22c55e">🔄 转化SOP</div>
+<h2>询盘→订单的6步转化引擎</h2>
+</div>
+
+<div class="grid-2">
+<div style="padding:16px;background:rgba(255,255,255,0.02);border-radius:10px;border:1px solid rgba(255,255,255,0.06)">
+<h4 style="color:#ffd700;font-size:14px;margin-bottom:10px">⏱ 响应时效</h4>
+<div style="font-size:13px;padding:5px 0"><strong style="color:#fff">1小时内：</strong> 回复询盘 + PDF产品目录</div>
+<div style="font-size:13px;padding:5px 0"><strong style="color:#fff">24小时内：</strong> 发送2-3个方案 + 报价</div>
+<div style="font-size:13px;padding:5px 0"><strong style="color:#fff">48小时内：</strong> 提议免费样品（客户付运费）</div>
+<div style="font-size:13px;padding:5px 0"><strong style="color:#fff">7天：</strong> 限时折扣码跟进</div>
+<div style="font-size:13px;padding:5px 0"><strong style="color:#fff">14天：</strong> 新品目录更新</div>
+<div style="font-size:13px;padding:5px 0"><strong style="color:#fff">30天：</strong> 行业报告 + 跟进</div>
+</div>
+<div style="padding:16px;background:rgba(255,215,0,0.03);border-radius:10px;border:1px solid rgba(255,215,0,0.1)">
+<h4 style="color:#ffd700;font-size:14px;margin-bottom:10px">📞 话术模板</h4>
+<div style="font-size:12px;color:rgba(255,255,255,0.6);margin-bottom:8px;background:rgba(0,0,0,0.2);padding:10px;border-radius:6px">
+<strong style="color:#fff">开场：</strong> "Thank you for your interest in MKK Commercial Slow Juicer. Here is our catalog with full specifications and pricing. We offer free samples for bulk order evaluation."<br><br>
+<strong style="color:#fff">跟单：</strong> "We have a special promotion this week — 5% off for orders over ,000. Also offering custom packaging with your brand logo at no extra cost."
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- KPI Dashboard -->
+<section class="section" id="kpi">
+<div class="container">
+<div class="section-header">
+<div class="badge" style="background:rgba(255,215,0,0.1);color:#ffd700">📊 目标看板</div>
+<h2>KPI追踪 · 每周必须达标</h2>
+</div>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>指标</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>月累计</th></tr></thead>
+<tbody>
+<tr><td>日均流量</td><td>200</td><td>500</td><td>800</td><td>1,200</td><td>-</td></tr>
+<tr><td>日均询盘</td><td>5</td><td>15</td><td>25</td><td>40</td><td>600+</td></tr>
+<tr><td>询盘→样品率</td><td>10%</td><td>15%</td><td>20%</td><td>25%</td><td>-</td></tr>
+<tr><td>样品→订单率</td><td>15%</td><td>20%</td><td>25%</td><td>30%</td><td>-</td></tr>
+<tr style="font-weight:700;background:rgba(255,215,0,0.06)"><td>成交额(USD)</td><td>5,000</td><td>15,000</td><td>30,000</td><td>50,000</td><td>100,000</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="kpi-grid" style="margin-top:20px">
+<div class="kpi-card"><div class="num"></div><div class="lbl">30天目标</div><div class="sub">日均,333</div></div>
+<div class="kpi-card"><div class="num">600+</div><div class="lbl">总询盘</div><div class="sub">日均20+</div></div>
+<div class="kpi-card"><div class="num">4%+</div><div class="lbl">转化率</div><div class="sub">行业平均3%</div></div>
+<div class="kpi-card"><div class="num">,280</div><div class="lbl">总预算</div><div class="sub">23x ROI目标</div></div>
+</div>
+</div>
+</section>
+
+<!-- Budget Summary -->
+<section class="section">
+<div class="container">
+<div class="section-header">
+<div class="badge" style="background:rgba(168,85,247,0.1);color:#a855f7">💰 预算分配</div>
+<h2>,280 弹药分配</h2>
+</div>
+
+<div class="grid-2">
+<div class="table-wrap">
+<table><thead><tr><th>项目</th><th style="text-align:right">USD</th><th style="text-align:right">占比</th></tr></thead>
+<tbody>
+<tr><td>Alibaba P4P</td><td style="text-align:right">1,200</td><td style="text-align:right">28%</td></tr>
+<tr><td>Google Ads</td><td style="text-align:right">800</td><td style="text-align:right">19%</td></tr>
+<tr><td>Bing Ads</td><td style="text-align:right">300</td><td style="text-align:right">7%</td></tr>
+<tr><td>TikTok/IG推广</td><td style="text-align:right">300</td><td style="text-align:right">7%</td></tr>
+<tr><td>样品寄送(20客户)</td><td style="text-align:right">600</td><td style="text-align:right">14%</td></tr>
+<tr><td>视频/拍摄制作</td><td style="text-align:right">500</td><td style="text-align:right">12%</td></tr>
+<tr><td>KOL合作(3-5个)</td><td style="text-align:right">500</td><td style="text-align:right">12%</td></tr>
+<tr><td>Shopify+工具</td><td style="text-align:right">80</td><td style="text-align:right">2%</td></tr>
+<tr style="font-weight:700;background:rgba(255,215,0,0.06)"><td>合计</td><td style="text-align:right;color:#ffd700">4,280</td><td style="text-align:right;color:#ffd700">100%</td></tr>
+</tbody></table>
+</div>
+<div>
+<div class="card" style="margin-bottom:12px">
+<div class="lbl">投入产出比计算</div>
+<div class="val" style="font-size:18px">投入 ,280 → 目标 ,000</div>
+<div class="sub" style="margin-top:8px">ROI = 23x（每花）</div>
+<div class="progress" style="margin-top:8px"><div class="fill" style="width:23%"></div></div>
+<div class="sub" style="margin-top:4px">行业平均ROI约 5-10x，23x需精准投放+高转化</div>
+</div>
+<div class="alert alert-red"><i class="fas fa-shield-alt"></i><div><strong>止损线：</strong> 如果P4P/Google Ads的ROI连续3天低于3x，立即停投该渠道，转投长尾词或EDM等免费渠道。</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Risk & Closing -->
+<section class="section">
+<div class="container">
+<div class="section-header">
+<div class="badge" style="background:rgba(239,68,68,0.1);color:#ef4444">⚠️ 风险预案</div>
+<h2>五大风险与应对</h2>
+</div>
+
+<div class="grid-2" style="margin-bottom:20px">
+<div style="padding:14px;background:rgba(239,68,68,0.04);border-radius:8px;border:1px solid rgba(239,68,68,0.1)">
+<div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="font-weight:600;color:#ef4444">询盘转化率低</span><span class="tag tag-red">高概率</span></div>
+<div style="font-size:13px;color:rgba(255,255,255,0.5)">优化话术模板，降价策略（每单多给5%折扣），免费样品加速决策</div>
+</div>
+<div style="padding:14px;background:rgba(239,68,68,0.04);border-radius:8px;border:1px solid rgba(239,68,68,0.1)">
+<div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="font-weight:600;color:#ef4444">冻干设备/大单周期长</span><span class="tag tag-red">高概率</span></div>
+<div style="font-size:13px;color:rgba(255,255,255,0.5)">先推低客单慢榨汁机+冻干茶粉走量。设备单持续跟单不放弃，第2-3月转化</div>
+</div>
+<div style="padding:14px;background:rgba(255,215,0,0.04);border-radius:8px;border:1px solid rgba(255,215,0,0.1)">
+<div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="font-weight:600;color:#ffd700">P4P点击成本过高</span><span class="tag tag-gold">中概率</span></div>
+<div style="font-size:13px;color:rgba(255,255,255,0.5)">转投长尾词+Google Ads补充搜索流量，降低P4P预算50%</div>
+</div>
+<div style="padding:14px;background:rgba(255,215,0,0.04);border-radius:8px;border:1px solid rgba(255,215,0,0.1)">
+<div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="font-weight:600;color:#ffd700">月底差距大</span><span class="tag tag-gold">中概率</span></div>
+<div style="font-size:13px;color:rgba(255,255,255,0.5)">D25启动"月末冲量特价"：满 + </div>
+</div>
+</div>
+
+<div class="alert alert-red"><i class="fas fa-exclamation-triangle"></i><div><strong>重要提醒：</strong> 成立仅7个月、注册资本100万的公司，/月是非常激进的目标。建议保留心理底线-50K作为第一个月的实际目标。跑通全流程后逐步放大。</div></div>
+</div>
+</section>
+
+<!-- Team Assignment -->
+<section class="section" id="team">
+<div class="container">
+<div class="section-header">
+<div class="badge" style="background:rgba(59,130,246,0.1);color:#3b82f6">👥 团队任务分配</div>
+<h2>4人核心团队 · 每人每天做什么</h2>
+<p>假设最小作战单元：1运营经理 + 1外贸销售 + 1社媒内容 + 1产品/拍摄</p>
+</div>
+
+<div class="grid-3" style="margin-bottom:20px">
+<div class="card" style="border-left:3px solid #ffd700">
+<div class="lbl" style="color:#ffd700">👤 运营经理 · 1人</div>
+<div class="val" style="font-size:14px">统筹 + P4P + 数据分析</div>
+<div class="sub" style="margin-top:8px">
+<div style="background:rgba(255,215,0,0.06);border-radius:6px;padding:10px;margin-top:6px">
+<div style="font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:4px">📋 每日任务清单</div>
+<div class="task" style="font-size:12px;color:rgba(255,255,255,0.7);padding:2px 0;padding-left:14px;position:relative">P4P账户数据监测与调价（30分钟）</div>
+<div class="task" style="font-size:12px;color:rgba(255,255,255,0.7);padding:2px 0;padding-left:14px;position:relative">产品页SEO优化与A/B测试标题（20分钟）</div>
+<div class="task" style="font-size:12px;color:rgba(255,255,255,0.7);padding:2px 0;padding-left:14px;position:relative">竞品监控与关键词扩展（15分钟）</div>
+<div class="task" style="font-size:12px;color:rgba(255,255,255,0.7);padding:2px 0;padding-left:14px;position:relative">全店数据日报（流量/询盘/转化）（15分钟）</div>
+<div class="task" style="font-size:12px;color:rgba(255,255,255,0.7);padding:2px 0;padding-left:14px;position:relative">Google/Bing Ads投放优化（15分钟）</div>
+</div>
+</div>
+<div class="sub" style="margin-top:6px;font-size:11px;color:rgba(255,255,255,0.3)">⏱ 每日耗时：约1.5-2小时</div>
+</div>
+
+<div class="card" style="border-left:3px solid #22c55e">
+<div class="lbl" style="color:#22c55e">👤 外贸销售 · 1人</div>
+<div class="val" style="font-size:14px">RFQ报价 + 询盘跟进 + 订单转化</div>
+<div class="sub" style="margin-top:8px">
+<div style="background:rgba(34,197,94,0.06);border-radius:6px;padding:10px;margin-top:6px">
+<div style="font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:4px">📋 每日任务清单</div>
+<div class="task" style="font-size:12px;color:rgba(255,255,255,0.7);padding:2px 0;padding-left:14px;position:relative">RFQ报价50条（按关键词订阅+精准匹配）（1小时）</div>
+<div class="task" style="font-size:12px;color:rgba(255,255,255,0.7);padding:2px 0;padding-left:14px;position:relative">新询盘1小时内回复 + 发送PDF目录（30分钟）</div>
+<div class="task" style="font-size:12px;color:rgba(255,255,255,0.7);padding:2px 0;padding-left:14px;position:relative">跟进历史询盘客户（24h/48h/7d/14d各节点）（20分钟）</div>
+<div class="task" style="font-size:12px;color:rgba(255,255,255,0.7);padding:2px 0;padding-left:14px;position:relative">WhatsApp/邮件跟进重点客户（10个/天）（30分钟）</div>
+<div class="task" style="font-size:12px;color:rgba(255,255,255,0.7);padding:2px 0;padding-left:14px;position:relative">客户档案维护 + 商机分级（A/B/C级）（15分钟）</div>
+</div>
+</div>
+<div class="sub" style="margin-top:6px;font-size:11px;color:rgba(255,255,255,0.3)">⏱ 每日耗时：约3-4小时（核心岗位）</div>
+</div>
+
+<div class="card" style="border-left:3px solid #3b82f6">
+<div class="lbl" style="color:#3b82f6">👤 社媒/内容运营 · 1人</div>
+<div class="val" style="font-size:14px">短视频 + 社媒矩阵 + EDM</div>
+<div class="sub" style="margin-top:8px">
+<div style="background:rgba(59,130,246,0.06);border-radius:6px;padding:10px;margin-top:6px">
+<div style="font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:4px">📋 每日任务清单</div>
+<div class="task" style="font-size:12px;color:rgba(255,255,255,0.7);padding:2px 0;padding-left:14px;position:relative">制作1-2条短视频（TikTok/IG Reels）（1-2小时）</div>
+<div class="task" style="font-size:12px;color:rgba(255,255,255,0.7);padding:2px 0;padding-left:14px;position:relative">发布+互动+回复评论（3平台各15分钟）（45分钟）</div>
+<div class="task" style="font-size:12px;color:rgba(255,255,255,0.7);padding:2px 0;padding-left:14px;position:relative">LinkedIn发布1篇行业内容/B2B帖子（20分钟）</div>
+<div class="task" style="font-size:12px;color:rgba(255,255,255,0.7);padding:2px 0;padding-left:14px;position:relative">Pinterest更新产品图板（10分钟）</div>
+<div class="task" style="font-size:12px;color:rgba(255,255,255,0.7);padding:2px 0;padding-left:14px;position:relative">EDM邮件序列执行与数据追踪（15分钟）</div>
+</div>
+</div>
+<div class="sub" style="margin-top:6px;font-size:11px;color:rgba(255,255,255,0.3)">⏱ 每日耗时：约3-4小时</div>
+</div>
+
+<div class="card" style="border-left:3px solid #a855f7">
+<div class="lbl" style="color:#a855f7">👤 产品/拍摄 · 1人（可兼任/外包）</div>
+<div class="val" style="font-size:14px">产品拍摄 + 主图制作 + 视频</div>
+<div class="sub" style="margin-top:8px">
+<div style="background:rgba(168,85,247,0.06);border-radius:6px;padding:10px;margin-top:6px">
+<div style="font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:4px">📋 第1周集中任务（完成后转为按需）</div>
+<div class="task" style="font-size:12px;color:rgba(255,255,255,0.7);padding:2px 0;padding-left:14px;position:relative">D1-D2：MKK慢榨汁机白底图/拆解图/场景图（6-8张）</div>
+<div class="task" style="font-size:12px;color:rgba(255,255,255,0.7);padding:2px 0;padding-left:14px;position:relative">D3：冻干茶粉/冻干水果实物图+包装图（10张）</div>
+<div class="task" style="font-size:12px;color:rgba(255,255,255,0.7);padding:2px 0;padding-left:14px;position:relative">D3-D4：慢榨汁机操作视频（30-60秒）+ 冻干茶溶解对比视频</div>
+<div class="task" style="font-size:12px;color:rgba(255,255,255,0.7);padding:2px 0;padding-left:14px;position:relative">D4-D5：工厂实拍/车间视频/包装线（3-5分钟验厂视频）</div>
+<div class="task" style="font-size:12px;color:rgba(255,255,255,0.7);padding:2px 0;padding-left:14px;position:relative">D5后：按需更新 + 支持社媒内容素材</div>
+</div>
+</div>
+<div class="sub" style="margin-top:6px;font-size:11px;color:rgba(255,255,255,0.3)">⏱ 第1周集中投入，此后每周约8-10小时</div>
+</div>
+</div>
+
+<h3 style="font-size:15px;color:#fff;margin:20px 0 10px">📅 周会制度</h3>
+<div class="grid-4">
+<div style="padding:14px;background:rgba(255,215,0,0.04);border-radius:8px;border:1px solid rgba(255,215,0,0.1);text-align:center">
+<div style="font-weight:700;color:#ffd700;font-size:20px">周一</div>
+<div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px">09:00 周计划会<br>定本周目标+资源分配<br>30分钟</div>
+</div>
+<div style="padding:14px;background:rgba(34,197,94,0.04);border-radius:8px;border:1px solid rgba(34,197,94,0.1);text-align:center">
+<div style="font-weight:700;color:#22c55e;font-size:20px">周三</div>
+<div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px">16:00 进度同步会<br>数据复盘+问题协调<br>20分钟</div>
+</div>
+<div style="padding:14px;background:rgba(59,130,246,0.04);border-radius:8px;border:1px solid rgba(59,130,246,0.1);text-align:center">
+<div style="font-weight:700;color:#3b82f6;font-size:20px">周五</div>
+<div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px">17:00 周复盘会<br>本周KPI+下周策略<br>30分钟</div>
+</div>
+<div style="padding:14px;background:rgba(168,85,247,0.04);border-radius:8px;border:1px solid rgba(168,85,247,0.1);text-align:center">
+<div style="font-weight:700;color:#a855f7;font-size:20px">每日</div>
+<div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px">09:15 站会<br>每人3句话：昨天产出/今天计划/卡点<br>15分钟</div>
+</div>
+</div>
+
+<h3 style="font-size:15px;color:#fff;margin:20px 0 10px">🔑 关键岗位KPI考核</h3>
+<div class="table-wrap">
+<table><thead><tr><th>岗位</th><th>核心KPI</th><th>日目标</th><th>周目标</th><th>月目标</th></tr></thead>
+<tbody>
+<tr><td><strong>运营经理</strong></td><td>店铺流量 / P4P ROI</td><td>监控数据+调价</td><td>流量+20%</td><td>日均1,200流量，P4P ROI≥5x</td></tr>
+<tr><td><strong>外贸销售</strong></td><td>询盘量 / 转化率</td><td>RFQ 50条 + 跟进</td><td>询盘80+</td><td>600+询盘，4%+转化率</td></tr>
+<tr><td><strong>社媒运营</strong></td><td>内容产出 / 互动率</td><td>视频1-2条+3平台</td><td>粉丝+15%</td><td>总粉丝1,000+，询盘导流50+</td></tr>
+<tr><td><strong>产品/拍摄</strong></td><td>素材产出 / 完成度</td><td>按项目制交付</td><td>产品素材全齐</td><td>全产品线素材库完成</td></tr>
+</tbody></table>
+</div>
+
+<div class="alert alert-blue" style="margin-top:16px"><i class="fas fa-users"></i><div><strong>如果团队不足4人：</strong> 最低配置2人（1运营兼销售 + 1社媒兼拍摄），但运营经理需每天花2小时做RFQ报价，社媒每天制作内容时间压缩到1.5小时。外包摄影和KOL合作可以补拍摄缺口。</div></div>
+</div>
+</section>
+
+</div>
+</section>
+
+<footer class="footer">
+<div class="container">
+<p><strong>杨氏冻干（肇庆）生物科技有限公司</strong> · yangshimkk.en.alibaba.com</p>
+<p>报告生成：2026-06-02 · 数据来源 · 基于Alibaba直接访问</p>
+<p><strong>报告作者：李振芳 </strong> · 微信：15219407427</p>
+
+
+</div>
+</footer>
+
+<script>
+document.querySelectorAll('.nav a').forEach(function(a){
+a.addEventListener('click',function(e){
+e.preventDefault();
+var t = document.querySelector(this.getAttribute('href'));
+if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
+});
+});
+</script>
+</body>
+</html>
+
+
