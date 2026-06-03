@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>甲子科技 | 电商顾问 · AI智慧增长引擎 & 案例链接加密管家（持久化存储）</title>
+    <title>甲子科技 | 电商顾问 · AI智慧增长引擎 & 诊断书案例链接</title>
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&amp;family=Space+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&amp;display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -19,11 +19,6 @@
             background: #fefefe;
             color: #0c1b33;
             overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
-
-        .animated-bg {
-            background: linear-gradient(135deg, #f6f9fc 0%, #eef2ff 100%);
         }
 
         .container {
@@ -32,17 +27,7 @@
             padding: 0 24px;
         }
 
-        .fade-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s ease;
-        }
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* 头部样式 (完全保留原1rengs.com风格) */
+        /* 头部样式 */
         header {
             backdrop-filter: blur(12px);
             background: rgba(255,255,255,0.85);
@@ -100,92 +85,7 @@
         }
         .nav-links a:hover { color: #2563eb; }
 
-        .btn-primary {
-            background: linear-gradient(100deg, #1e3a8a, #2563eb);
-            border: none;
-            padding: 12px 28px;
-            border-radius: 40px;
-            color: white;
-            font-weight: 600;
-            transition: all 0.3s;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 12px rgba(37,99,235,0.2);
-        }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 20px -4px #2563eb60; }
-        .btn-outline {
-            background: transparent;
-            border: 1.5px solid #2563eb;
-            color: #2563eb;
-            padding: 10px 26px;
-            border-radius: 40px;
-            font-weight: 600;
-            transition: 0.2s;
-            cursor: pointer;
-        }
-        .btn-outline:hover { background: #eef2ff; transform: translateY(-2px); }
-
-        .hero {
-            padding: 70px 0 80px;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero-grid {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-            flex-wrap: wrap;
-        }
-        .hero-content { flex: 1.2; }
-        .hero-badge {
-            background: rgba(37,99,235,0.12);
-            color: #1e40af;
-            padding: 6px 16px;
-            border-radius: 40px;
-            display: inline-block;
-            font-weight: 600;
-            font-size: 0.85rem;
-            margin-bottom: 24px;
-        }
-        .hero-content h1 {
-            font-size: 3.3rem;
-            font-weight: 800;
-            line-height: 1.2;
-            background: linear-gradient(135deg, #0f2b5e, #2563eb);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            margin-bottom: 20px;
-        }
-        .hero-desc {
-            font-size: 1.1rem;
-            color: #334155;
-            margin-bottom: 32px;
-            max-width: 600px;
-        }
-        .hero-stats {
-            flex: 0.8;
-            display: grid;
-            grid-template-columns: repeat(2,1fr);
-            gap: 20px;
-        }
-        .stat-card {
-            background: rgba(255,255,255,0.7);
-            backdrop-filter: blur(8px);
-            padding: 20px 16px;
-            border-radius: 28px;
-            text-align: center;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
-        }
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 800;
-            color: #1e3a8a;
-        }
-
-        /* 案例链接表格模块 (玻璃质感) */
+        /* 案例链接表格模块 */
         .link-card-container {
             margin: 60px 0;
             background: rgba(255, 255, 255, 0.85);
@@ -215,7 +115,6 @@
 
         .table-wrapper {
             overflow-x: auto;
-            margin-bottom: 2rem;
         }
 
         .link-table {
@@ -224,8 +123,9 @@
             border-spacing: 0 12px;
         }
 
+        /* 表头单元格水平居中 */
         .link-table thead th {
-            text-align: left;
+            text-align: center;
             padding: 0.8rem 1rem;
             font-weight: 600;
             font-size: 0.85rem;
@@ -247,14 +147,16 @@
             box-shadow: 0 12px 22px -12px rgba(0, 32, 64, 0.12);
         }
 
+        /* 表格数据单元格水平居中 */
         .link-table td {
             padding: 1rem 1rem;
             vertical-align: middle;
+            text-align: center;
         }
 
         .site-name-link, .url-link {
             text-decoration: none;
-            display: inline-flex;
+            display: inline-flex;      /* 保持内联弹性，使链接宽度自适应，父级 text-align:center 会使其居中 */
             align-items: center;
             gap: 8px;
             transition: 0.2s;
@@ -277,78 +179,13 @@
             color: #2d7fae;
         }
 
-        .action-buttons {
-            display: flex;
-            gap: 0.6rem;
-        }
-
-        .edit-btn, .delete-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.3rem 0.8rem;
-            border-radius: 2rem;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .edit-btn {
-            color: #2c7a5e;
-            background: rgba(44,122,94,0.1);
-        }
-        .edit-btn:hover {
-            background: #dff0ea;
-        }
-        .delete-btn {
-            color: #9aaebf;
-            background: rgba(154,174,191,0.1);
-        }
-        .delete-btn:hover {
-            background: #ffe6e5;
-            color: #e15554;
-        }
-
         .empty-message td {
             text-align: center;
             padding: 2.5rem !important;
             color: #6e8eaa;
         }
 
-        .form-panel {
-            background: rgba(255,255,240,0.6);
-            border-radius: 1.6rem;
-            padding: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .input-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 1.2rem;
-        }
-
-        .input-field {
-            flex: 1;
-            min-width: 180px;
-        }
-
-        .input-field input {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border-radius: 1.2rem;
-            border: 1px solid #cbdde9;
-            background: white;
-            font-size: 0.9rem;
-        }
-
-        .button-group {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        /* 底部样式 (完全保留原1rengs.com) */
+        /* 底部样式 */
         footer {
             background: #0c1b33;
             color: #b9c7e2;
@@ -356,79 +193,15 @@
             text-align: center;
             margin-top: 2rem;
         }
-
         footer a {
             color: #ffd966;
             text-decoration: none;
         }
-
         footer a:hover {
             text-decoration: underline;
         }
 
-        .toast-msg {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #1e293b;
-            color: white;
-            padding: 10px 24px;
-            border-radius: 60px;
-            opacity: 0;
-            transition: 0.2s;
-            pointer-events: none;
-            z-index: 1000;
-        }
-
-        /* 密码弹窗 & 编辑模态框 */
-        .custom-password-overlay, .edit-modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.4);
-            backdrop-filter: blur(5px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-        }
-        .password-modal, .edit-modal {
-            background: white;
-            border-radius: 2rem;
-            max-width: 360px;
-            width: 90%;
-            padding: 1.8rem;
-            text-align: center;
-            animation: modalPop 0.2s ease;
-        }
-        .edit-modal {
-            max-width: 450px;
-            text-align: left;
-        }
-        .edit-modal .field { margin-bottom: 1rem; }
-        .edit-modal input {
-            width: 100%;
-            padding: 0.7rem;
-            border-radius: 1.5rem;
-            border: 1px solid #cbdde9;
-        }
-        @keyframes modalPop {
-            from { opacity: 0; transform: scale(0.96);}
-            to { opacity: 1; transform: scale(1);}
-        }
-        .modal-buttons {
-            display: flex;
-            gap: 0.8rem;
-            justify-content: center;
-            margin-top: 1rem;
-        }
-        .error-msg { color: #d14545; font-size: 0.75rem; margin-top: 0.4rem; }
-
         @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.2rem; }
             .section-title { font-size: 1.8rem; }
             .link-card-container { padding: 1.2rem; }
         }
@@ -436,7 +209,7 @@
 </head>
 <body>
 
-<!-- ========= 头部区域 完全保留原网页结构 ========= -->
+<!-- ========= 头部 ========= -->
 <header>
     <div class="container">
         <div class="nav-bar">
@@ -457,63 +230,27 @@
 </header>
 
 <main>
-    <!-- Hero 区域 (完全保留原网页) -->
-    <section id="home" class="hero animated-bg">
-        <div class="container">
-            <div class="hero-grid">
-                <div class="hero-content fade-up visible">
-                    <div class="hero-badge"><i class="fas fa-microchip"></i> 甲子智脑AI · 自有深度学习系统</div>
-                    <h1>电商顾问<br>让每个店铺都拥有AI数据大脑</h1>
-                    <p class="hero-desc">依托甲子科技自研「观星」AI分析引擎，360度店铺诊断，智能输出业绩增长方案。资深电商顾问·李振芳1v1陪跑，助您突围竞争。</p>
-                    <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-                        <a href="#demo" class="btn-primary"><i class="fas fa-chart-line"></i> 体验AI诊断店铺</a>
-                        <button id="heroCopyWechat" class="btn-outline"><i class="fab fa-weixin"></i> 复制顾问微信</button>
-                    </div>
-                </div>
-                <div class="hero-stats fade-up visible">
-                    <div class="stat-card"><div class="stat-number">98.6%</div><div>店铺诊断准确率</div></div>
-                    <div class="stat-card"><div class="stat-number">500+</div><div>AI模型迭代次数</div></div>
-                    <div class="stat-card"><div class="stat-number">24h</div><div>实时监控预警</div></div>
-                    <div class="stat-card"><div class="stat-number">30%+</div><div>平均业绩提升</div></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 加密案例链接管理模块 (集成持久化存储) -->
     <div class="container" id="link-manager">
         <div class="link-card-container">
             <h2 class="section-title">🔗 电商顾问 · 客户店铺诊断书案例</h2>
-            <div class="section-sub">✨ 诊断书全面展示了店铺/网站存在的问题</div>
+            <div class="section-sub">诊断书全面展示了店铺/网站存在的问题</div>
 
             <div class="table-wrapper">
                 <table class="link-table">
                     <thead>
-                        <tr><th>🔖 企业名称</th><th>🌐 链接地址</th><th>⚙️ 操作</th></tr>
+                        <tr><th>🔖 企业名称</th><th>🌐 链接地址</th></tr>
                     </thead>
                     <tbody id="linkTableBody">
-                        <tr class="empty-message"><td colspan="3">✨ 加载中... ✨</td></tr>
+                        <!-- 动态渲染案例链接 -->
+                        <tr class="empty-message"><td colspan="2">✨ 加载中... ✨</td></tr>
                     </tbody>
                 </table>
-            </div>
-
-            <div class="form-panel">
-                <div style="font-weight:600; margin-bottom:1rem;"><i class="fas fa-plus-circle"></i> 添加新案例链接 · 需密码验证</div>
-                <div class="input-group">
-                    <div class="input-field"><label>企业名称</label><input type="text" id="siteName" placeholder="例如：技术博客"></div>
-                    <div class="input-field"><label>网址 (URL)</label><input type="text" id="siteUrl" placeholder="https:// 或 http://"></div>
-                </div>
-                <div class="button-group">
-                    <button class="btn-primary" id="addLinkBtn"><i class="fas fa-lock"></i> 添加 (需密码)</button>
-                    <button class="btn-secondary" id="resetDefaultBtn" style="background:white; border:1px solid #bdd4e2; padding:0.6rem 1.4rem; border-radius:40px;">🔄 重置为默认示例</button>
-                    <button class="btn-secondary" id="clearAllBtn" style="background:white; border:1px solid #bdd4e2; padding:0.6rem 1.4rem; border-radius:40px;">🗑️ 清空全部</button>
-                </div>
             </div>
         </div>
     </div>
 </main>
 
-<!-- ========= 底部区域 完全保留原网页内容 ========= -->
+<!-- ========= 底部 ========= -->
 <footer>
     <div class="container">
         <p>© 2026 甲子科技有限公司 — 电商顾问 | AI数据驱动未来</p>
@@ -523,362 +260,66 @@
         </p>
     </div>
 </footer>
-<div id="toastMsg" class="toast-msg">已复制微信号，打开微信添加顾问·李振芳</div>
 
 <script>
-    // ======================= 原网页功能: 复制微信 =======================
-    const wechatNum = "19902364771";
-    function showToast(msg) {
-        const toast = document.getElementById("toastMsg");
-        toast.textContent = msg || "已复制微信号，立即联系顾问";
-        toast.style.opacity = "1";
-        setTimeout(() => { toast.style.opacity = "0"; }, 2200);
-    }
-    function copyWechat() {
-        if (navigator.clipboard) {
-            navigator.clipboard.writeText(wechatNum).then(() => showToast("✅ 微信号 19902364771 已复制，添加李振芳顾问")).catch(() => showToast("手动复制失败"));
-        } else {
-            const textarea = document.createElement("textarea");
-            textarea.value = wechatNum;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand("copy");
-            document.body.removeChild(textarea);
-            showToast("复制成功，微信添加电商顾问");
-        }
-    }
-    document.getElementById("heroCopyWechat")?.addEventListener("click", copyWechat);
-
-    // ======================= 加密案例链接模块 + localStorage 持久化 =======================
-    const STORAGE_KEY = "friendLinksData";
-    // 默认示例链接
+    // 默认案例链接数据
     const DEFAULT_LINKS = [
-        { name: 'MDN Web Docs', url: 'https://developer.mozilla.org/zh-CN/' },
-        { name: 'GitHub 开源社区', url: 'https://github.com/' },
-        { name: 'Stack Overflow', url: 'https://stackoverflow.com/' },
-        { name: 'Vue.js 官方', url: 'https://vuejs.org/' },
-        { name: 'React 中文', url: 'https://react.dev/' },
-        { name: 'Tailwind CSS', url: 'https://tailwindcss.com/' }
+        { name: '甲子科技', url: 'https://1rengs.com/qiye' },
+        { name: '杨氏冻干', url: 'https://1rengs.com/qiye/yangshi.html' },
     ];
 
-    const PWD_ENCRYPTED = "lplp99";   
-    function verifyPassword(inputPwd) {
-        if (!inputPwd) return false;
-        let transformed = "";
-        for (let i = 0; i < inputPwd.length; i++) {
-            transformed += String.fromCharCode(inputPwd.charCodeAt(i) + 1);
-        }
-        return transformed === PWD_ENCRYPTED;
-    }
-
-    function askPassword() {
-        return new Promise((resolve) => {
-            const overlay = document.createElement('div');
-            overlay.className = 'custom-password-overlay';
-            overlay.innerHTML = `
-                <div class="password-modal">
-                    <h3>🔐 管理员验证</h3>
-                    <p>操作需要加密密码授权</p>
-                    <input type="password" id="pwdInput" placeholder="请输入管理员密码" autocomplete="off">
-                    <div id="pwdError" class="error-msg"></div>
-                    <div class="modal-buttons">
-                        <button id="confirmPwdBtn">确认</button>
-                        <button id="cancelPwdBtn">取消</button>
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(overlay);
-            const input = overlay.querySelector('#pwdInput');
-            const errSpan = overlay.querySelector('#pwdError');
-            const confirmBtn = overlay.querySelector('#confirmPwdBtn');
-            const cancelBtn = overlay.querySelector('#cancelPwdBtn');
-            const cleanup = () => overlay.remove();
-            const onConfirm = () => {
-                const ok = verifyPassword(input.value);
-                if (ok) { cleanup(); resolve(true); }
-                else { errSpan.textContent = '❌ 密码错误，操作被拒绝'; input.value = ''; input.focus(); resolve(false); }
-            };
-            const onCancel = () => { cleanup(); resolve(false); };
-            confirmBtn.addEventListener('click', onConfirm);
-            cancelBtn.addEventListener('click', onCancel);
-            input.addEventListener('keypress', (e) => { if (e.key === 'Enter') onConfirm(); });
-            input.focus();
-        });
-    }
-
     const tbody = document.getElementById('linkTableBody');
-    function escapeHtml(str) { return (str || '').replace(/[&<>]/g, m => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;' }[m])); }
 
-    // 根据链接数据渲染整个表格
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, m => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;' }[m]));
+    }
+
     function renderLinks(links) {
         tbody.innerHTML = '';
         if (!links || links.length === 0) {
             const emptyTr = document.createElement('tr');
             emptyTr.className = 'empty-message';
-            emptyTr.innerHTML = '<td colspan="3">✨ 暂无案例链接，请在下方添加 ✨</td>';
+            emptyTr.innerHTML = '<td colspan="2">✨ 暂无案例链接 ✨</td>';
             tbody.appendChild(emptyTr);
             return;
         }
+
         links.forEach(link => {
-            const row = createLinkRowDOM(link.name, link.url);
-            if (row) tbody.appendChild(row);
+            let finalUrl = link.url.trim();
+            if (!/^https?:\/\//i.test(finalUrl)) finalUrl = 'https://' + finalUrl;
+
+            const tr = document.createElement('tr');
+
+            // 名称单元格（可点击链接）
+            const tdName = document.createElement('td');
+            const nameLink = document.createElement('a');
+            nameLink.href = finalUrl;
+            nameLink.target = '_blank';
+            nameLink.rel = 'noopener noreferrer';
+            nameLink.className = 'site-name-link';
+            nameLink.innerHTML = `<i class="fas fa-globe"></i> ${escapeHtml(link.name)}`;
+            tdName.appendChild(nameLink);
+
+            // 地址单元格（可点击链接）
+            const tdUrl = document.createElement('td');
+            const urlLink = document.createElement('a');
+            urlLink.href = finalUrl;
+            urlLink.target = '_blank';
+            urlLink.rel = 'noopener noreferrer';
+            urlLink.className = 'url-link';
+            let displayUrl = finalUrl.length > 70 ? finalUrl.substring(0, 65) + '...' : finalUrl;
+            urlLink.textContent = displayUrl;
+            tdUrl.appendChild(urlLink);
+
+            tr.appendChild(tdName);
+            tr.appendChild(tdUrl);
+            tbody.appendChild(tr);
         });
     }
 
-    // 创建DOM行 (不依赖现有DOM，纯数据)
-    function createLinkRowDOM(siteName, rawUrl) {
-        let finalUrl = rawUrl.trim();
-        if (!finalUrl) return null;
-        if (!/^https?:\/\//i.test(finalUrl)) finalUrl = 'https://' + finalUrl;
-        if (/^javascript:/i.test(finalUrl) || /^data:/i.test(finalUrl) || /^vbscript:/i.test(finalUrl)) { alert("非法链接协议"); return null; }
-        try { new URL(finalUrl); } catch(e) { alert("网址格式无效"); return null; }
-
-        const tr = document.createElement('tr');
-        const tdName = document.createElement('td');
-        const nameLink = document.createElement('a');
-        nameLink.href = finalUrl;
-        nameLink.target = '_blank';
-        nameLink.rel = 'noopener noreferrer';
-        nameLink.className = 'site-name-link';
-        nameLink.innerHTML = `<i class="fas fa-globe"></i> ${escapeHtml(siteName)}`;
-        tdName.appendChild(nameLink);
-
-        const tdUrl = document.createElement('td');
-        const urlLink = document.createElement('a');
-        urlLink.href = finalUrl;
-        urlLink.target = '_blank';
-        urlLink.rel = 'noopener noreferrer';
-        urlLink.className = 'url-link';
-        let displayUrl = finalUrl.length > 70 ? finalUrl.substring(0,65)+'...' : finalUrl;
-        urlLink.textContent = displayUrl;
-        tdUrl.appendChild(urlLink);
-
-        const tdAction = document.createElement('td');
-        tdAction.className = 'action-buttons';
-        const editBtn = document.createElement('button');
-        editBtn.className = 'edit-btn';
-        editBtn.innerHTML = '<i class="fas fa-edit"></i> 编辑';
-        const delBtn = document.createElement('button');
-        delBtn.className = 'delete-btn';
-        delBtn.innerHTML = '<i class="fas fa-trash-alt"></i> 删除';
-        tdAction.appendChild(editBtn);
-        tdAction.appendChild(delBtn);
-        tr.appendChild(tdName);
-        tr.appendChild(tdUrl);
-        tr.appendChild(tdAction);
-        // 存储数据到行属性，便于编辑时获取
-        tr.dataset.name = siteName;
-        tr.dataset.url = finalUrl;
-        return tr;
-    }
-
-    // 从localStorage读取链接列表，若没有则返回默认
-    function loadLinksFromStorage() {
-        const stored = localStorage.getItem(STORAGE_KEY);
-        if (stored) {
-            try {
-                const data = JSON.parse(stored);
-                if (Array.isArray(data) && data.length) return data;
-                else return [...DEFAULT_LINKS];
-            } catch(e) { return [...DEFAULT_LINKS]; }
-        }
-        return [...DEFAULT_LINKS];
-    }
-
-    // 保存链接列表到localStorage
-    function saveLinksToStorage(links) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(links));
-    }
-
-    // 获取当前页面中实际展示的链接数据 (从DOM提取)
-    function getCurrentLinksFromDOM() {
-        const rows = tbody.querySelectorAll('tr:not(.empty-message)');
-        const links = [];
-        rows.forEach(row => {
-            const name = row.dataset.name;
-            const url = row.dataset.url;
-            if (name && url) links.push({ name, url });
-        });
-        return links;
-    }
-
-    // 同步DOM并保存到localStorage (根据当前DOM)
-    function syncStorageFromDOM() {
-        const links = getCurrentLinksFromDOM();
-        saveLinksToStorage(links);
-    }
-
-    // 完全刷新页面数据 (用于重置/清空后)
-    function refreshFromData(linksArray) {
-        renderLinks(linksArray);
-        // 重新绑定dataset (因为renderLinks通过createLinkRowDOM已经设置dataset)
-        // 并且保存到localStorage
-        saveLinksToStorage(linksArray);
-    }
-
-    // 添加新链接 (内部无密码，需外部调用密码)
-    function addLinkToMemory(name, url) {
-        let finalUrl = url.trim();
-        if (!finalUrl) return false;
-        if (!/^https?:\/\//i.test(finalUrl)) finalUrl = 'https://' + finalUrl;
-        // 防重复
-        const current = getCurrentLinksFromDOM();
-        if (current.some(link => link.url === finalUrl && link.name === name)) {
-            alert("该链接已存在");
-            return false;
-        }
-        const newLink = { name, url: finalUrl };
-        current.push(newLink);
-        refreshFromData(current);
-        return true;
-    }
-
-    // 编辑链接 (根据旧name+url 替换)
-    function editLinkInMemory(oldName, oldUrl, newName, newUrl) {
-        let finalNewUrl = newUrl.trim();
-        if (!/^https?:\/\//i.test(finalNewUrl)) finalNewUrl = 'https://' + finalNewUrl;
-        const current = getCurrentLinksFromDOM();
-        const index = current.findIndex(link => link.name === oldName && link.url === oldUrl);
-        if (index === -1) return false;
-        // 防重复 (除了自身)
-        const isDuplicate = current.some((link, idx) => idx !== index && link.url === finalNewUrl && link.name === newName);
-        if (isDuplicate) { alert("修改后的链接已存在"); return false; }
-        current[index] = { name: newName, url: finalNewUrl };
-        refreshFromData(current);
-        return true;
-    }
-
-    // 删除链接
-    function deleteLinkFromMemory(name, url) {
-        let current = getCurrentLinksFromDOM();
-        const newList = current.filter(link => !(link.name === name && link.url === url));
-        if (newList.length === current.length) return false;
-        refreshFromData(newList);
-        return true;
-    }
-
-    // 清空所有
-    function clearAllLinks() {
-        refreshFromData([]);
-    }
-
-    // 重置为默认
-    function resetToDefault() {
-        refreshFromData([...DEFAULT_LINKS]);
-    }
-
-    // ---------- 事件委托 (编辑/删除) 需要密码验证并操作内存+存储 ----------
-    tbody.addEventListener('click', async (e) => {
-        const btn = e.target.closest('button');
-        if (!btn) return;
-        const row = btn.closest('tr');
-        if (!row || row.classList.contains('empty-message')) return;
-        const oldName = row.dataset.name;
-        const oldUrl = row.dataset.url;
-        if (btn.classList.contains('edit-btn')) {
-            // 弹出编辑框
-            const overlay = document.createElement('div');
-            overlay.className = 'edit-modal-overlay';
-            overlay.innerHTML = `
-                <div class="edit-modal">
-                    <h3>✏️ 编辑案例链接</h3>
-                    <div class="field"><label>企业名称</label><input type="text" id="editName" value="${escapeHtml(oldName)}"></div>
-                    <div class="field"><label>网址 (URL)</label><input type="text" id="editUrl" value="${escapeHtml(oldUrl)}"></div>
-                    <div class="modal-buttons">
-                        <button id="saveEditBtn" class="btn-primary">保存修改</button>
-                        <button id="cancelEditBtn" class="btn-secondary">取消</button>
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(overlay);
-            const nameInput = overlay.querySelector('#editName');
-            const urlInput = overlay.querySelector('#editUrl');
-            const saveBtn = overlay.querySelector('#saveEditBtn');
-            const cancelBtn = overlay.querySelector('#cancelEditBtn');
-            const cleanup = () => overlay.remove();
-            const save = async () => {
-                const newName = nameInput.value.trim();
-                let newUrl = urlInput.value.trim();
-                if (!newName) { alert("名称不能为空"); return; }
-                if (!newUrl) { alert("URL不能为空"); return; }
-                if (!/^https?:\/\//i.test(newUrl)) newUrl = 'https://' + newUrl;
-                try { new URL(newUrl); } catch(e) { alert("URL格式无效"); return; }
-                // 密码验证
-                const ok = await askPassword();
-                if (!ok) { alert("密码错误，修改取消"); cleanup(); return; }
-                const success = editLinkInMemory(oldName, oldUrl, newName, newUrl);
-                if (!success) alert("修改失败，可能重复或不存在");
-                cleanup();
-            };
-            saveBtn.addEventListener('click', save);
-            cancelBtn.addEventListener('click', cleanup);
-        } 
-        else if (btn.classList.contains('delete-btn')) {
-            const ok = await askPassword();
-            if (ok) {
-                if (confirm("确定删除此案例链接吗？")) {
-                    deleteLinkFromMemory(oldName, oldUrl);
-                }
-            } else alert("密码错误，删除取消");
-        }
-    });
-
-    // 添加链接 (密码保护)
-    const addBtn = document.getElementById('addLinkBtn');
-    const nameInput = document.getElementById('siteName');
-    const urlInput = document.getElementById('siteUrl');
-    async function handleAdd() {
-        const nameVal = nameInput.value.trim();
-        let urlVal = urlInput.value.trim();
-        if (!nameVal) { alert("请填写企业名称"); return; }
-        if (!urlVal) { alert("请填写网址"); return; }
-        const auth = await askPassword();
-        if (!auth) { alert("密码错误，添加失败"); return; }
-        const success = addLinkToMemory(nameVal, urlVal);
-        if (success) {
-            nameInput.value = '';
-            urlInput.value = '';
-            nameInput.focus();
-        }
-    }
-    addBtn.addEventListener('click', handleAdd);
-    nameInput.addEventListener('keypress', (e) => { if(e.key==='Enter') handleAdd(); });
-    urlInput.addEventListener('keypress', (e) => { if(e.key==='Enter') handleAdd(); });
-
-    // 重置 & 清空
-    document.getElementById('resetDefaultBtn').addEventListener('click', async () => {
-        if (confirm("重置将替换当前所有链接为默认示例，确定继续吗？")) {
-            resetToDefault();
-        }
-    });
-    document.getElementById('clearAllBtn').addEventListener('click', async () => {
-        const currentLinks = getCurrentLinksFromDOM();
-        if (currentLinks.length === 0) { alert("已经是空表"); return; }
-        if (confirm("⚠️ 确认清空所有案例链接？数据将永久丢失。")) {
-            clearAllLinks();
-        }
-    });
-
-    // 页面初始化：读取 localStorage 并渲染
-    function init() {
-        const storedLinks = loadLinksFromStorage();
-        renderLinks(storedLinks);
-        // 确保存储与实际同步（如果存储为空则存入默认）
-        const current = getCurrentLinksFromDOM();
-        if (current.length === 0 && storedLinks.length === 0) {
-            refreshFromData(DEFAULT_LINKS);
-        } else if (current.length !== storedLinks.length) {
-            // 保险同步
-            saveLinksToStorage(current);
-        }
-    }
-    init();
-
-    // 滚动动画
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    // 初始化：渲染预设链接
+    renderLinks(DEFAULT_LINKS);
 </script>
 </body>
 </html>
