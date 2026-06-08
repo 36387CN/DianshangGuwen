@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="甲子科技专业电脑技术员服务 - 操作系统安装、AI部署、软件工具安装、蓝屏、卡顿、网络故障等全栈IT解决方案。">
+    <title>甲子科技 | 专业IT故障解决专家</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f4f7fc;
+            color: #1e2a3e;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            background: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(2px);
+            border-bottom: 1px solid #e2edf2;
+        }
+        .nav-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            flex-wrap: wrap;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo i {
+            font-size: 2rem;
+            color: #1e6f9f;
+        }
+        .logo h1 {
+            font-size: 1.65rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1e6f9f, #2c9c7c);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.3px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #2c3e50;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        .nav-links a:hover {
+            color: #1e6f9f;
+        }
+
+        /* Hero 区域 */
+        .hero {
+            background: linear-gradient(120deg, #eef5fa 0%, #ffffff 100%);
+            padding: 3rem 0 2rem 0;
+            border-bottom: 1px solid #dde9f0;
+        }
+        .hero-content {
+            text-align: center;
+            max-width: 880px;
+            margin: 0 auto;
+        }
+        .hero-badge {
+            background: #d9eefb;
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #1e6f9f;
+            margin-bottom: 1rem;
+        }
+        .hero h2 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: #0a2a3b;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #3a5c6e;
+            margin-bottom: 1.8rem;
+        }
+        .stat-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+        .stat-item {
+            background: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 60px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        .stat-item i {
+            color: #2c9c7c;
+            margin-right: 8px;
+        }
+
+        /* 搜索区域 */
+        .search-section {
+            margin: 2.5rem 0 1.5rem 0;
+        }
+        .search-wrapper {
+            background: white;
+            border-radius: 72px;
+            padding: 6px 6px 6px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            border: 1px solid #cfdfe8;
+            transition: all 0.2s;
+        }
+        .search-wrapper:focus-within {
+            border-color: #1e6f9f;
+            box-shadow: 0 8px 24px rgba(30,111,159,0.12);
+        }
+        .search-wrapper i {
+            color: #7e9eb0;
+            font-size: 1.2rem;
+        }
+        .search-wrapper input {
+            flex: 1;
+            border: none;
+            padding: 1rem 0.8rem;
+            font-size: 1rem;
+            background: transparent;
+            outline: none;
+            font-weight: 400;
+        }
+        .search-wrapper button {
+            background: #1e6f9f;
+            border: none;
+            color: white;
+            padding: 0.7rem 1.6rem;
+            border-radius: 60px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.9rem;
+        }
+        .search-wrapper button:hover {
+            background: #0f547d;
+        }
+        .result-count {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #4a6f86;
+            font-weight: 500;
+        }
+
+        /* 卡片网格 */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 28px;
+            margin: 2rem 0 2.5rem;
+        }
+        .card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.6rem;
+            transition: all 0.25s ease;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e4edf2;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.1);
+            border-color: #cbdde6;
+        }
+        .card-icon {
+            background: #e6f2f9;
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            margin-bottom: 1.2rem;
+        }
+        .card-icon i {
+            font-size: 1.8rem;
+            color: #1e6f9f;
+        }
+        .card h3 {
+            font-size: 1.45rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #0f2c3b;
+        }
+        .card p {
+            color: #4a6272;
+            font-size: 0.95rem;
+            line-height: 1.45;
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+        .card button {
+            background: transparent;
+            border: 1.5px solid #c4d5e0;
+            padding: 0.7rem 0;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #1e6f9f;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: auto;
+        }
+        .card button i {
+            font-size: 0.8rem;
+            transition: transform 0.2s;
+        }
+        .card button:hover {
+            background: #1e6f9f;
+            border-color: #1e6f9f;
+            color: white;
+        }
+        .card button:hover i {
+            transform: translateX(4px);
+            color: white;
+        }
+
+        /* 专家区块 */
+        .expert-section {
+            background: linear-gradient(105deg, #e4f0f7 0%, #d4e5f0 100%);
+            border-radius: 40px;
+            padding: 2.5rem 2rem;
+            margin: 2rem 0 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.8rem;
+        }
+        .expert-text h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0a3449;
+            margin-bottom: 0.5rem;
+        }
+        .expert-text p {
+            color: #2c5a70;
+            max-width: 460px;
+        }
+        .expert-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            background: #1e6f9f;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.95rem;
+        }
+        .btn-primary:hover {
+            background: #0f5a84;
+            transform: scale(1.02);
+        }
+        .btn-outline-light {
+            background: transparent;
+            border: 1.5px solid #1e6f9f;
+            color: #1e6f9f;
+            padding: 0.8rem 1.8rem;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-outline-light:hover {
+            background: #ffffffc9;
+        }
+
+        /* 页脚 */
+        .footer {
+            background: #0a2738;
+            color: #bfd9e8;
+            padding: 2rem 0 1.5rem;
+            margin-top: 3rem;
+            border-radius: 32px 32px 0 0;
+        }
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .footer-col p {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+        }
+        .footer-social a {
+            color: #bfd9e8;
+            margin-right: 1rem;
+            font-size: 1.3rem;
+            transition: 0.2s;
+        }
+        .footer-social a:hover {
+            color: white;
+        }
+
+        /* 模态框通用样式 */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.2s ease;
+        }
+        .modal-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        .modal-container {
+            background: white;
+            max-width: 550px;
+            width: 90%;
+            border-radius: 32px;
+            padding: 1.8rem;
+            box-shadow: 0 30px 40px rgba(0,0,0,0.2);
+            transform: scale(0.97);
+            transition: transform 0.2s;
+        }
+        .modal-overlay.active .modal-container {
+            transform: scale(1);
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #e2edf2;
+            padding-bottom: 1rem;
+            margin-bottom: 1.2rem;
+        }
+        .modal-header h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #0f2c3b;
+        }
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: #7b9aae;
+        }
+        .modal-body {
+            max-height: 60vh;
+            overflow-y: auto;
+            padding-right: 8px;
+        }
+        .solution-steps {
+            list-style: none;
+            padding-left: 0;
+        }
+        .solution-steps li {
+            background: #f8fafc;
+            margin-bottom: 12px;
+            padding: 12px 16px;
+            border-radius: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            border-left: 4px solid #2c9c7c;
+        }
+        .solution-steps li i {
+            color: #2c9c7c;
+            font-size: 1.2rem;
+            margin-top: 2px;
+        }
+        .empty-state {
+            text-align: center;
+            padding: 2.5rem;
+            background: #f9fdfe;
+            border-radius: 40px;
+            color: #5c7f92;
+        }
+        .qr-code-wrapper {
+            text-align: center;
+            padding: 1rem 0 0.8rem;
+        }
+        .qr-code-wrapper img {
+            width: 180px;
+            height: 180px;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            background: white;
+            padding: 8px;
+            margin-bottom: 12px;
+            object-fit: contain;
+        }
+        .qr-code-wrapper p {
+            margin-top: 12px;
+            font-weight: 500;
+            color: #1e6f9f;
+        }
+        .qr-tip {
+            font-size: 0.9rem;
+            color: #5c7f92;
+        }
+        @media (max-width: 700px) {
+            .hero h2 {
+                font-size: 1.9rem;
+            }
+            .nav-flex {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .search-wrapper {
+                padding: 4px 4px 4px 18px;
+            }
+            .search-wrapper button {
+                padding: 0.5rem 1.2rem;
+            }
+            .expert-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            .expert-text p {
+                margin: 0 auto;
+            }
+            .qr-code-wrapper img {
+                width: 160px;
+                height: 160px;
+            }
+        }
+        i, button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 导航栏 -->
+<div class="navbar">
+    <div class="container nav-flex">
+        <div class="logo">
+            <i class="fas fa-microchip"></i>
+            <h1>甲子科技</h1>
+        </div>
+        <div class="nav-links">
+            <a href="javascript:void(0)" data-nav="home">主页</a>
+            <a href="javascript:void(0)" data-nav="solutions">解决方案</a>
+            <a href="javascript:void(0)" data-nav="remote">远程协助</a>
+            <a href="javascript:void(0)" data-nav="contact">联系专家</a>
+        </div>
+    </div>
+</div>
+
+<!-- Hero 区域 -->
+<section class="hero">
+    <div class="container hero-content">
+        <div class="hero-badge"><i class="fas fa-tools"></i> 甲子科技 · 全栈电脑技术员</div>
+        <h2>操作系统安装 · AI本地部署 · 任意软件工具<br>专业故障排除与进阶指南</h2>
+        <p>从重装系统到部署大模型，从驱动更新到开发环境配置 — 一站式技术员解决方案。</p>
+        <div class="stat-badges">
+            <span class="stat-item"><i class="fas fa-hdd"></i> 系统安装教程</span>
+            <span class="stat-item"><i class="fas fa-brain"></i> AI部署指南</span>
+            <span class="stat-item"><i class="fas fa-cube"></i> 软件工具库</span>
+            <span class="stat-item"><i class="fas fa-headset"></i> 专家实时支持</span>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <!-- 搜索栏 -->
+    <div class="search-section">
+        <div class="search-wrapper">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="搜索问题: 操作系统安装, AI部署, 蓝屏, 软件安装, Python..." autocomplete="off">
+            <button id="searchBtn"><i class="fas fa-arrow-right"></i> 筛选</button>
+        </div>
+        <div class="result-count" id="resultCount">加载全栈技术方案中...</div>
+    </div>
+
+    <!-- 动态卡片容器 (解决方案区域) -->
+    <div id="cardsContainer" class="cards-grid"></div>
+
+    <!-- 专家协助区块 (远程协助区域) -->
+    <div id="expertSection" class="expert-section">
+        <div class="expert-text">
+            <h3><i class="fas fa-user-cog"></i> 需要资深技术员协助？</h3>
+            <p>无论是系统安装卡在BIOS、AI环境配置报错，还是软件工具部署失败，我们提供一对一远程调试。</p>
+        </div>
+        <div class="expert-buttons">
+            <button class="btn-primary" id="contactExpertBtn"><i class="fas fa-comment-dots"></i> 预约支持</button>
+            <button class="btn-outline-light" id="quickTipBtn"><i class="fas fa-life-ring"></i> 紧急故障自查</button>
+        </div>
+    </div>
+</div>
+
+<!-- 页脚 -->
+<footer class="footer">
+    <div class="container footer-inner">
+        <div class="footer-col">
+            <i class="fas fa-laptop-code" style="font-size: 1.8rem; margin-bottom: 10px; display: inline-block;"></i>
+            <p>© 2025 甲子科技 · 电脑技术员团队<br>操作系统 | AI部署 | 任意软件安装 | 硬件排障</p>
+        </div>
+        <div class="footer-col footer-social">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+    </div>
+</footer>
+
+<!-- 解决方案详情模态框 -->
+<div id="solutionModal" class="modal-overlay">
+    <div class="modal-container">
+        <div class="modal-header">
+            <h3 id="modalTitle">技术解决方案</h3>
+            <button class="modal-close" id="closeModalBtn">&times;</button>
+        </div>
+        <div class="modal-body" id="modalBody">
+            <ul class="solution-steps" id="stepsList"></ul>
+        </div>
+    </div>
+</div>
+
+<!-- 预约支持专用模态框 (微信二维码) - 已修改电话和二维码地址 -->
+<div id="wechatModal" class="modal-overlay">
+    <div class="modal-container">
+        <div class="modal-header">
+            <h3><i class="fab fa-weixin"></i> 甲子科技 · 专属技术顾问</h3>
+            <button class="modal-close" id="closeWechatModalBtn">&times;</button>
+        </div>
+        <div class="modal-body" style="text-align: center;">
+            <div class="qr-code-wrapper">
+                <!-- 二维码图片地址改为用户指定的链接 -->
+                <img id="wechatQrImg" src="/img/199weixin.jpg" alt="微信二维码" >
+                <p><i class="fab fa-weixin"></i> 扫码添加技术专家微信</p>
+                <div class="qr-tip">
+                    添加时请备注“电脑技术咨询”，获取一对一远程协助、系统安装指导、AI部署答疑。
+                </div>
+                <!-- 电话号码已修改 -->
+                <div style="margin-top: 20px; background: #eef5fa; padding: 10px; border-radius: 28px;">
+                    <i class="fas fa-phone-alt"></i> 咨询电话：15219407427
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ---------- 全栈问题数据集 (涵盖操作系统安装、AI部署、软件工具安装、常见故障) ----------
+    const problemsData = [
+        { id: 1, title: "电脑运行极度缓慢", shortDesc: "开机慢、软件卡顿，多任务几乎无法进行。", icon: "fa-tachometer-alt", steps: ["【磁盘清理】使用“磁盘清理”删除临时文件和回收站垃圾。","【禁用开机启动项】按 Ctrl+Shift+Esc 打开任务管理器 → 启动 → 禁用非必要程序。","【检查硬件】增加内存条或更换固态硬盘（SSD），大幅提升速度。","【查杀恶意软件】运行 Windows Defender 或第三方杀软全盘扫描。"] },
+        { id: 2, title: "蓝屏错误 (BSOD)", shortDesc: "系统突然蓝屏并重启，伴随错误代码。", icon: "fa-bug", steps: ["【记录代码】拍下蓝屏代码（如：IRQL_NOT_LESS_OR_EQUAL）。","【更新驱动】重点更新显卡、主板芯片组驱动。","【内存检测】使用 Windows 内存诊断工具测试 RAM 错误。","【检查硬件温度】清理机箱灰尘，确保风扇运转正常。"] },
+        { id: 3, title: "Wi-Fi 网络频繁断开", shortDesc: "无线网络不稳定，掉线或无法连接。", icon: "fa-wifi", steps: ["【重启设备】重启路由器和电脑，排除临时故障。","【更新网卡驱动】设备管理器 → 网络适配器 → 更新驱动程序。","【更改电源管理】关闭允许计算机关闭此设备以节约电源选项。","【修改信道】路由器后台更换无线信道，避免干扰。"] },
+        { id: 4, title: "程序无响应/崩溃", shortDesc: "应用突然停止工作或频繁闪退。", icon: "fa-window-close", steps: ["【强制结束】任务管理器结束该进程，重启程序。","【兼容性修复】右键程序属性 → 兼容性 → 以管理员身份运行。","【重装软件】彻底卸载后用官方最新版安装包重新安装。","【系统文件检查】运行命令 sfc /scannow 修复系统文件。"] },
+        { id: 5, title: "电脑自动重启或关机", shortDesc: "使用中突然断电式重启，无预警。", icon: "fa-power-off", steps: ["【电源检查】确保电源适配器/电源功率足够，更换排插测试。","【散热排查】CPU温度过高导致保护重启，更换硅脂或清灰。","【关闭自动重启】系统属性 → 高级 → 启动和故障恢复取消自动重启。","【BIOS重置】恢复出厂设置，避免超频不稳。"] },
+        { id: 6, title: "USB 外设无法识别", shortDesc: "鼠标、U盘、移动硬盘插入无反应。", icon: "fa-usb", steps: ["【更换端口】尝试其他 USB 接口，尤其 USB 3.0/2.0 区别。","【驱动重装】设备管理器中卸载通用串行总线控制器，重启自动重装。","【电源管理】禁用 USB 选择性暂停设置（电源选项）。","【磁盘管理】U盘未分配盘符时，手动添加盘符。"] },
+        { id: 7, title: "Windows 更新失败", shortDesc: "更新卡住、安装错误或回滚。", icon: "fa-sync-alt", steps: ["【运行疑难解答】设置 → 更新和安全 → 疑难解答 → Windows 更新。","【清理更新缓存】删除 C:\\Windows\\SoftwareDistribution 文件夹内容。","【手动下载】前往 Microsoft Update Catalog 下载对应补丁。","【服务修复】确保 Windows Update 服务为自动启动状态。"] },
+        { id: 8, title: "病毒/恶意软件感染", shortDesc: "弹窗广告、主页篡改、异常占用资源。", icon: "fa-shield-virus", steps: ["【脱网扫描】断开网络，使用 Windows Defender 脱机扫描。","【专杀工具】运行 Malwarebytes 或 AdwCleaner 深度查杀。","【浏览器重置】清除所有扩展与缓存，修复主页设置。","【系统还原】严重感染时恢复至早期还原点或重装系统。"] },
+        { id: 9, title: "操作系统全新安装 (Windows/Linux)", shortDesc: "从U盘启动到分区安装，重装系统/双系统详细指南。", icon: "fa-hdd", steps: ["【制作启动介质】使用Rufus或Ventoy将官方ISO写入≥8GB U盘。","【进入BIOS/UEFI】重启按F2/Del/F12，设置U盘为第一启动项，关闭Secure Boot（部分机型）。","【磁盘分区】安装界面中删除原有分区并新建，推荐UEFI+GPT模式。","【安装驱动与优化】系统完成后安装网卡/显卡驱动，运行系统更新并激活。"] },
+        { id: 10, title: "AI 大模型/绘图本地部署 (LLM+SD)", shortDesc: "在个人电脑上运行 Llama 3、ChatGLM 或 Stable Diffusion。", icon: "fa-brain", steps: ["【硬件检查】NVIDIA显卡(6GB+显存)或高性能CPU，安装CUDA 12.x及cuDNN。","【环境搭建】安装Python 3.10，创建虚拟环境，安装PyTorch/TensorFlow。","【快速方案】使用 Ollama / LM Studio 一键部署Llama3；或使用AUTOMATIC1111部署SD。","【模型下载】通过HuggingFace或ModelScope下载量化模型，运行推理测试。"] },
+        { id: 11, title: "常用软件工具安装与配置", shortDesc: "Python, VS Code, Git, Docker, Office, Adobe全家桶指导。", icon: "fa-cogs", steps: ["【包管理器推荐】使用winget / chocolatey 一键安装: winget install Python.Python.3.12","【环境变量设置】手动配置PATH确保命令行识别python, node, git等。","【开发工具配置】VS Code安装扩展(Python, GitLens, Docker)，设置代码片段。","【验证测试】分别执行 python --version, git --version, docker --version，确保软件可用。"] },
+        { id: 12, title: "显卡驱动安装与性能优化", shortDesc: "解决黑屏、掉帧、AI训练卡顿，驱动最佳实践。", icon: "fa-gamepad", steps: ["【彻底卸载旧驱动】使用DDU进入安全模式卸载残留驱动。","【官网下载最新版】NVIDIA/AMD官网获取Studio或Game Ready驱动，执行清洁安装。","【图形设置】NVIDIA控制面板开启高性能、调整着色器缓存大小。","【监控工具】使用MSI Afterburner监控温度及频率，防止降频。"] },
+        { id: 13, title: "Docker & 虚拟机环境部署", shortDesc: "WSL2、Docker Desktop、VMware安装及网络配置。", icon: "fa-docker", steps: ["【启用虚拟化】BIOS开启Intel VT-x/AMD-V，Windows启用Hyper-V和WSL2。","【安装Docker Desktop】下载安装后切换到Linux容器模式，配置镜像加速。","【虚拟机安装】VMware Workstation Player安装Ubuntu/Windows Guest。","【网络测试】运行 docker run hello-world 和 虚拟机桥接网络验证。"] },
+        { id: 14, title: "硬盘故障与数据恢复", shortDesc: "误删文件、分区丢失、硬盘坏道修复。", icon: "fa-database", steps: ["【停止写入】立即停止对故障硬盘的操作，避免覆盖数据。","【恢复软件】使用TestDisk修复分区表，PhotoRec/Recuva恢复删除文件。","【磁盘检测】CrystalDiskInfo查看健康状态，HD Tune扫描坏道。","【专业送修】物理损坏（异响）务必断电并寻求数据恢复公司。"] }
+    ];
+
+    let currentFiltered = [...problemsData];
+    const cardsContainer = document.getElementById('cardsContainer');
+    const searchInput = document.getElementById('searchInput');
+    const searchBtn = document.getElementById('searchBtn');
+    const resultCountSpan = document.getElementById('resultCount');
+
+    // 模态框
+    const solutionModal = document.getElementById('solutionModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const stepsList = document.getElementById('stepsList');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const wechatModal = document.getElementById('wechatModal');
+    const closeWechatModalBtn = document.getElementById('closeWechatModalBtn');
+
+    function escapeHtml(str) {
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    function renderCards(dataArray) {
+        if (!dataArray.length) {
+            cardsContainer.innerHTML = `<div class="empty-state"><i class="fas fa-search" style="font-size: 3rem; opacity: 0.6;"></i><h3 style="margin: 1rem 0;">未找到匹配的技术问题</h3><p>试试“操作系统安装”、“AI部署”、“软件安装”、“蓝屏”等关键词，或联系专家。</p></div>`;
+            resultCountSpan.innerText = `😞 没有匹配的结果，尝试更宽泛的搜索词。`;
+            return;
+        }
+        let html = '';
+        for (let prob of dataArray) {
+            let iconClass = prob.icon ? `fa-${prob.icon}` : "fa-desktop";
+            html += `<div class="card" data-id="${prob.id}"><div class="card-icon"><i class="fas ${iconClass}"></i></div><h3>${escapeHtml(prob.title)}</h3><p>${escapeHtml(prob.shortDesc)}</p><button class="view-solution-btn" data-id="${prob.id}">查看详细方案 <i class="fas fa-arrow-right"></i></button></div>`;
+        }
+        cardsContainer.innerHTML = html;
+        resultCountSpan.innerText = `🔧 找到 ${dataArray.length} 个专业技术方案，点击卡片获取完整步骤。`;
+    }
+
+    function filterProblems(keyword) {
+        if (!keyword.trim()) currentFiltered = [...problemsData];
+        else {
+            const kw = keyword.trim().toLowerCase();
+            currentFiltered = problemsData.filter(prob => prob.title.toLowerCase().includes(kw) || prob.shortDesc.toLowerCase().includes(kw));
+        }
+        renderCards(currentFiltered);
+    }
+
+    function showSolutionModal(problemId) {
+        const problem = problemsData.find(p => p.id == problemId);
+        if (!problem) return;
+        modalTitle.innerText = `🛠️ ${problem.title} · 技术员操作步骤`;
+        let stepsHtml = '';
+        problem.steps.forEach(step => { stepsHtml += `<li><i class="fas fa-wrench"></i><span>${escapeHtml(step)}</span></li>`; });
+        stepsList.innerHTML = stepsHtml;
+        solutionModal.classList.add('active');
+    }
+    function closeSolutionModal() { solutionModal.classList.remove('active'); }
+    function showWechatModal() { wechatModal.classList.add('active'); }
+    function closeWechatModal() { wechatModal.classList.remove('active'); }
+
+    // 平滑滚动辅助函数
+    function smoothScrollToElement(element, offset = 70) {
+        if (!element) return;
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo({ top: elementPosition - offset, behavior: 'smooth' });
+    }
+
+    // 头部导航菜单修复
+    const navHome = document.querySelector('[data-nav="home"]');
+    const navSolutions = document.querySelector('[data-nav="solutions"]');
+    const navRemote = document.querySelector('[data-nav="remote"]');
+    const navContact = document.querySelector('[data-nav="contact"]');
+    if (navHome) navHome.addEventListener('click', (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    if (navSolutions) navSolutions.addEventListener('click', (e) => { e.preventDefault(); const cardsGrid = document.getElementById('cardsContainer'); if (cardsGrid) smoothScrollToElement(cardsGrid, 80); });
+    if (navRemote) navRemote.addEventListener('click', (e) => { e.preventDefault(); const expertSec = document.getElementById('expertSection'); if (expertSec) smoothScrollToElement(expertSec, 80); });
+    if (navContact) navContact.addEventListener('click', (e) => { e.preventDefault(); showWechatModal(); });
+
+    // 事件委托
+    document.addEventListener('click', (e) => {
+        const solutionBtn = e.target.closest('.view-solution-btn');
+        if (solutionBtn) {
+            const id = solutionBtn.getAttribute('data-id');
+            if (id) showSolutionModal(parseInt(id));
+        }
+        if (e.target === solutionModal) closeSolutionModal();
+        if (e.target === wechatModal) closeWechatModal();
+    });
+
+    searchBtn.addEventListener('click', () => filterProblems(searchInput.value));
+    searchInput.addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') filterProblems(searchInput.value);
+        else {
+            clearTimeout(window.searchDebounce);
+            window.searchDebounce = setTimeout(() => filterProblems(searchInput.value), 300);
+        }
+    });
+
+    const contactBtn = document.getElementById('contactExpertBtn');
+    const quickTipBtn = document.getElementById('quickTipBtn');
+    if (contactBtn) contactBtn.addEventListener('click', showWechatModal);
+    if (quickTipBtn) quickTipBtn.addEventListener('click', () => alert("🔍 紧急自查提示：\n1. 重启电脑解决70%临时故障\n2. 检查所有线缆连接\n3. 运行系统文件检查 (sfc /scannow)\n若无法解决，请通过上方卡片查找精确方案或预约支持！"));
+
+    if (closeModalBtn) closeModalBtn.addEventListener('click', closeSolutionModal);
+    if (closeWechatModalBtn) closeWechatModalBtn.addEventListener('click', closeWechatModal);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            if (solutionModal.classList.contains('active')) closeSolutionModal();
+            if (wechatModal.classList.contains('active')) closeWechatModal();
+        }
+    });
+
+    renderCards(problemsData);
+</script>
+</body>
+</html>
