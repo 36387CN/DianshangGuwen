@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>全球外贸企业名录导航 | 找客户平台大全</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ========== 全局样式 & 重置 ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f4f7fc;
+            color: #1e2a3e;
+            line-height: 1.5;
+            padding: 0 20px 40px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* ========== 页头区域样式 (含谷歌广告容器) ========== */
+        .header-section {
+            text-align: center;
+            padding: 2rem 0 1rem;
+            border-bottom: 2px solid #e2e8f0;
+            margin-bottom: 2rem;
+        }
+        .site-title h1 {
+            font-size: 2.2rem;
+            background: linear-gradient(135deg, #0f2b3d, #1b4a6e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        .site-title p {
+            color: #2c5a7a;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .badge {
+            display: inline-block;
+            background: #e9ecef;
+            border-radius: 40px;
+            padding: 0.2rem 0.8rem;
+            font-size: 0.8rem;
+            color: #1e4663;
+            margin-top: 12px;
+        }
+        /* 谷歌广告容器 (页头专用) */
+        .google-ad-header {
+            margin: 20px 0 15px;
+            text-align: center;
+            background: #f8fafc;
+            border-radius: 24px;
+            padding: 12px 16px;
+            border: 1px solid #e2edf7;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+        .ad-label {
+            font-size: 11px;
+            color: #8b9aab;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .google-ad-placeholder {
+            background: #ffffff;
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            border: 1px dashed #cbdde9;
+            color: #6f8faa;
+            font-size: 14px;
+        }
+
+        /* ========== 正文区域样式 ========== */
+        .toolbar {
+            background: white;
+            border-radius: 60px;
+            padding: 0.5rem 1rem;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .search-box {
+            flex: 2;
+            min-width: 200px;
+            display: flex;
+            align-items: center;
+            background: #f1f5f9;
+            border-radius: 40px;
+            padding: 0.4rem 1rem;
+        }
+        .search-box i {
+            color: #5c7c8f;
+            margin-right: 8px;
+        }
+        .search-box input {
+            border: none;
+            background: transparent;
+            width: 100%;
+            padding: 0.5rem 0;
+            font-size: 0.95rem;
+            outline: none;
+        }
+        .region-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .filter-btn {
+            background: #eef2f6;
+            border: none;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            color: #2c3e4e;
+        }
+        .filter-btn.active {
+            background: #1f6392;
+            color: white;
+            box-shadow: 0 2px 6px rgba(31,99,146,0.3);
+        }
+        .filter-btn:hover:not(.active) {
+            background: #d4dfe8;
+        }
+        .stats {
+            font-size: 0.85rem;
+            background: white;
+            border-radius: 30px;
+            padding: 4px 14px;
+            color: #2c5a7a;
+        }
+        .region-section {
+            margin-bottom: 3rem;
+            background: transparent;
+        }
+        .region-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 6px solid #1f6392;
+            padding-left: 18px;
+            color: #0f3b54;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .region-title i {
+            font-size: 1.7rem;
+            color: #2c7cb6;
+        }
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.6rem;
+        }
+        .card {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03), 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 1px solid #eef2f8;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.12);
+            border-color: #cbdde9;
+        }
+        .card-content {
+            padding: 1.5rem 1.4rem 1.4rem;
+            flex: 1;
+        }
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+        .card-title a {
+            text-decoration: none;
+            color: #1a4c6e;
+            transition: color 0.2s;
+        }
+        .card-title a:hover {
+            color: #0e6b9e;
+            text-decoration: underline;
+        }
+        .recommend-tag {
+            background: #fee2b5;
+            color: #b45f06;
+            font-size: 0.65rem;
+            font-weight: 600;
+            padding: 2px 10px;
+            border-radius: 30px;
+            letter-spacing: 0.3px;
+        }
+        .card-desc {
+            color: #3b5d73;
+            font-size: 0.9rem;
+            line-height: 1.45;
+            margin: 10px 0 18px;
+        }
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #ecf3f8;
+            padding: 8px 16px;
+            border-radius: 40px;
+            color: #1f6392;
+            font-weight: 500;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            margin-top: 8px;
+        }
+        .card-link:hover {
+            background: #1f6392;
+            color: white;
+        }
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            background: white;
+            border-radius: 40px;
+            color: #6b8eaa;
+        }
+
+        /* ========== 底部福利区域样式 ========== */
+        .benefits-footer {
+            margin-top: 2.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafd 100%);
+            border-radius: 32px;
+            padding: 2rem 1.8rem;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+            border: 1px solid #e2edf7;
+        }
+        .benefits-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1a4c6e;
+            margin-bottom: 1.8rem;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+        .benefits-title i {
+            font-size: 2rem;
+            color: #f5b042;
+        }
+        .benefits-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.8rem;
+            margin-bottom: 2rem;
+        }
+        .benefit-card {
+            flex: 1;
+            min-width: 220px;
+            background: white;
+            border-radius: 28px;
+            padding: 1.6rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            border: 1px solid #eef2f8;
+            transition: transform 0.2s;
+        }
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            border-color: #cde0ed;
+        }
+        .benefit-icon {
+            font-size: 2.4rem;
+            color: #1f6392;
+            margin-bottom: 1rem;
+        }
+        .benefit-card h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0f3b54;
+            margin-bottom: 0.6rem;
+        }
+        .benefit-card p {
+            font-size: 0.9rem;
+            color: #4a6f8a;
+            line-height: 1.4;
+        }
+        .benefits-cta {
+            text-align: center;
+            margin-top: 0.8rem;
+        }
+        .benefits-cta a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #1f6392;
+            color: white;
+            padding: 10px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+            box-shadow: 0 4px 8px rgba(31,99,146,0.2);
+            cursor: pointer;
+        }
+        .benefits-cta a:hover {
+            background: #0e4f74;
+            transform: scale(1.02);
+        }
+        .copyright-row {
+            text-align: center;
+            margin-top: 1.8rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #dce5ec;
+            font-size: 0.8rem;
+            color: #6b8eaa;
+        }
+
+        /* ========== 模态框 (微信收款码 + 微信号) ========== */
+        .payment-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+        }
+        .modal-content {
+            background: #fff;
+            max-width: 380px;
+            width: 90%;
+            border-radius: 32px;
+            text-align: center;
+            padding: 1.8rem 1.5rem 2rem;
+            box-shadow: 0 25px 40px rgba(0,0,0,0.2);
+            position: relative;
+            animation: fadeInUp 0.25s ease-out;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 18px;
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: #8b9aab;
+            transition: color 0.2s;
+            line-height: 1;
+        }
+        .modal-close:hover {
+            color: #1f6392;
+        }
+        .modal-icon {
+            font-size: 2.4rem;
+            color: #2c7cb6;
+            margin-bottom: 0.8rem;
+        }
+        .modal-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a4c6e;
+            margin-bottom: 0.5rem;
+        }
+        .qr-container {
+            background: #ffffff;
+            padding: 12px;
+            border-radius: 24px;
+            margin: 1rem 0;
+            display: inline-block;
+            border: 1px solid #eef2f8;
+        }
+        .qr-img {
+            width: 200px;
+            height: 200px;
+            display: block;
+            margin: 0 auto;
+            background: #f8fafc;
+            border-radius: 16px;
+            object-fit: cover;
+        }
+        .wechat-id {
+            background: #f1f5f9;
+            border-radius: 60px;
+            padding: 10px 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #1e4663;
+            margin: 0.8rem 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .wechat-id i {
+            font-size: 1.2rem;
+            color: #2c9b77;
+        }
+        .copy-btn {
+            background: #eef2f6;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #1f6392;
+            font-weight: 500;
+        }
+        .copy-btn:hover {
+            background: #d4dfe8;
+        }
+        .modal-note {
+            font-size: 0.75rem;
+            color: #6b8eaa;
+            margin-top: 12px;
+        }
+        @media (max-width: 480px) {
+            .modal-content {
+                padding: 1.2rem 1rem 1.5rem;
+            }
+            .qr-img {
+                width: 150px;
+                height: 150px;
+            }
+            .wechat-id {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* 响应式 */
+        @media (max-width: 680px) {
+            body {
+                padding: 0 12px 30px;
+            }
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            .toolbar {
+                flex-direction: column;
+                align-items: stretch;
+                border-radius: 30px;
+            }
+            .region-filter {
+                justify-content: center;
+            }
+            .benefits-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            .benefit-card {
+                width: 100%;
+                max-width: 320px;
+            }
+            .benefits-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- ================= 页头区域 (Header) ================= -->
+    <div class="header-section">
+        <div class="site-title">
+            <h1><i class="fas fa-globe-americas"></i> 外贸企业名录导航</h1>
+            <p>精选全球200+国家企业信息平台 | 海关数据 · 黄页目录 · B2B名录</p>
+            <div class="badge"><i class="fas fa-check-circle"></i> 涵盖6大核心工具 + 80+垂直/区域平台</div>
+        </div>
+        <!-- 页头谷歌广告位 (请替换为真实 AdSense 代码) -->
+        <div class="google-ad-header">
+            <div class="ad-label"><i class="fas fa-ad"></i> 广告 · Google AdSense</div>
+            <div class="google-ad-placeholder">
+                <i class="fas fa-code"></i> 此处替换为您的 Google AdSense 广告单元代码
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= 正文区域 (Main Content) ================= -->
+    <div class="toolbar">
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="搜索平台名称、描述关键词...">
+        </div>
+        <div class="region-filter" id="regionFilterContainer">
+            <!-- 动态生成筛选按钮 -->
+        </div>
+        <div class="stats" id="statsCount">加载中...</div>
+    </div>
+    <div id="regionsContainer"></div>
+
+    <!-- ================= 底部区域 (Footer) ================= -->
+    <div class="benefits-footer">
+        <div class="benefits-title">
+            <i class="fas fa-rocket"></i> 
+            <span>加入一人公司孵化营，获得3大福利</span>
+            <i class="fas fa-gem"></i>
+        </div>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-infinity"></i></div>
+                <h4>永久使用免费token</h4>
+                <p>AI调用额度永不过期，赋能一人公司自动化运营</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-database"></i></div>
+                <h4>共享全球企业信息库</h4>
+                <p>海量海外企业名录、海关数据实时更新，精准拓客</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-microchip"></i></div>
+                <h4>一人公司全套AI系统及主机</h4>
+                <p>轻量化AI工具链 + 云端主机，零基础快速起步</p>
+            </div>
+        </div>
+        <div class="benefits-cta">
+            <a id="openPaymentModalBtn"><i class="fas fa-hand-peace"></i> 立即了解详情 →</a>
+        </div>
+        <div class="copyright-row">
+            <i class="fas fa-chart-line"></i> 数据持续更新 · 点击链接直达官网 · 建议配合LinkedIn/谷歌深度背调<br>
+            © 外贸拓客工具集 | 助您精准开发全球客户
+        </div>
+    </div>
+</div>
+
+<!-- 微信收款码 + 微信号 模态框 (点击“立即了解详情”弹出) -->
+<div id="paymentModal" class="payment-modal">
+    <div class="modal-content">
+        <span class="modal-close" id="closeModalBtn">&times;</span>
+        <div class="modal-icon"><i class="fab fa-weixin"></i></div>
+        <div class="modal-title">加入一人公司孵化营<br>请支付 ¥3500</div>
+        <div class="qr-container">
+            <!-- 收款码图片：使用高可用二维码API，内容为“微信号19902364771 付款3500”，确保显示正常 -->
+            <img id="wechatQrImg" class="qr-img" src="https://quickchart.io/qr?text=微信支付%0A微信号%3A19902364771%0A金额%3A3500元%0A备注%3A孵化营&size=250&margin=2" alt="微信收款码">
+        </div>
+        <div class="wechat-id">
+            <i class="fab fa-weixin"></i> 微信号：<strong>19902364771</strong>
+            <button class="copy-btn" id="copyWechatBtn"><i class="far fa-copy"></i> 复制</button>
+        </div>
+        <div class="modal-note">
+            <i class="fas fa-info-circle"></i> 请使用微信扫码或添加微信号，备注“孵化营”<br>付款后即可获得三大永久权益
+        </div>
+    </div>
+</div>
+
+<script>
+    // ========== 平台数据集 (完整企业名录) ==========
+    const platformsData = [
+        { name: "TuringSo AI", url: "https://www.turingsou.com", desc: "覆盖200个国家客户，支持城市定位+关键词搜索，WA开发利器，客户质量高", region: "⭐ 优选推荐", recommend: true },
+        { name: "Buzzfile", url: "https://www.buzzfile.com", desc: "专注美国市场，1800万企业数据，背调+新客户开发利器", region: "⭐ 优选推荐", recommend: true },
+        { name: "Cataloxy (俄罗斯及15国)", url: "https://www.cataloxy.ru", desc: "俄罗斯及独联体15国，超1000万企业数据，俄语市场首选", region: "⭐ 优选推荐", recommend: true },
+        { name: "Krak.dk", url: "https://www.krak.dk", desc: "丹麦本土企业名录，精准开发北欧市场", region: "⭐ 优选推荐", recommend: true },
+        { name: "eZlocal", url: "https://ezlocal.com", desc: "全球1500万家企业名录，含官网&联系方式，覆盖本地商户", region: "⭐ 优选推荐", recommend: true },
+        { name: "eSources UK", url: "https://www.esources.co.uk", desc: "英国B2B平台，39万英国企业+36万全球企业，批发商名录", region: "⭐ 优选推荐", recommend: true },
+        { name: "Europages", url: "https://www.europages.com", desc: "欧洲老牌B2B，180+国家300万企业，多语言搜索", region: "🌍 全球综合", recommend: false },
+        { name: "Kompass", url: "https://www.kompass.com", desc: "全球知名B2B目录，工业企业丰富，覆盖60+国家", region: "🌍 全球综合", recommend: false },
+        { name: "Infobel", url: "https://www.infobel.com", desc: "73个国家，超1亿家企业，电话地址官网全面", region: "🌍 全球综合", recommend: false },
+        { name: "OpenCorporates", url: "https://opencorporates.com", desc: "全球最大工商注册库，企业背调必备", region: "🌍 全球综合", recommend: false },
+        { name: "ImportGenius", url: "https://www.importgenius.com", desc: "海关数据平台，全球进口记录，美国数据最全", region: "🌍 全球综合", recommend: false },
+        { name: "Business YellowPages", url: "https://www.business-yellowpages.com", desc: "200+国家，超100万家企业，免费全球名录", region: "🌍 全球综合", recommend: false },
+        { name: "ListCompany", url: "https://waimaowang.net", desc: "全球化企业信息目录，多维筛选", region: "🌍 全球综合", recommend: false },
+        { name: "Fyple", url: "https://www.fyple.com", desc: "美国及多国本地黄页，行业地区分类展示", region: "🌍 全球综合", recommend: false },
+        { name: "ExportHub", url: "https://www.exporthub.com", desc: "巴基斯坦及多国B2B平台，多行业覆盖", region: "🌍 全球综合", recommend: false },
+        { name: "YellowPages (US)", url: "https://www.yellowpages.com", desc: "美国经典黄页，全行业目录检索", region: "🇺🇸 北美", recommend: false },
+        { name: "SuperPages", url: "https://www.superpages.com", desc: "美国本地商户，电话地址及客户评价", region: "🇺🇸 北美", recommend: false },
+        { name: "ThomasNet", url: "https://www.thomasnet.com", desc: "北美工业品名录，制造业资源王者", region: "🇺🇸 北美", recommend: false },
+        { name: "Manta", url: "https://www.manta.com", desc: "美国老牌商业目录，超百万中小企业", region: "🇺🇸 北美", recommend: false },
+        { name: "Hotfrog", url: "https://www.hotfrog.com", desc: "美国及国际商业名录，中小企业信息", region: "🇺🇸 北美", recommend: false },
+        { name: "DexKnows", url: "https://www.dexknows.com", desc: "美国本地商户，按行业/地区搜索", region: "🇺🇸 北美", recommend: false },
+        { name: "YellowPages (CA)", url: "https://www.yellowpages.ca", desc: "加拿大本土黄页，覆盖全加企业", region: "🇺🇸 北美", recommend: false },
+        { name: "IQS Directory", url: "https://www.iqsdirectory.com", desc: "工业制造B2B目录，机械电子材料行业", region: "🇺🇸 北美", recommend: false },
+        { name: "Scoot (UK)", url: "https://www.scoot.co.uk", desc: "英国本地商业平台，按产品/关键词搜索", region: "🇪🇺 欧洲", recommend: false },
+        { name: "Yell (UK)", url: "https://www.yell.com", desc: "英国最大商业黄页，数据量大分类细", region: "🇪🇺 欧洲", recommend: false },
+        { name: "PagesJaunes (FR)", url: "https://www.pagesjaunes.fr", desc: "法国权威黄页，市场调研利器", region: "🇪🇺 欧洲", recommend: false },
+        { name: "WLW (DE)", url: "https://www.wlw.de", desc: "德国工业B2B名录，60万家制造商", region: "🇪🇺 欧洲", recommend: false },
+        { name: "PagineGialle (IT)", url: "https://www.paginegialle.it", desc: "意大利黄页，食品建材机械行业佳", region: "🇪🇺 欧洲", recommend: false },
+        { name: "GelbeSeiten (DE)", url: "https://www.gelbeseiten.de", desc: "德国权威黄页，制造业服务业", region: "🇪🇺 欧洲", recommend: false },
+        { name: "Eniro (SE)", url: "https://www.eniro.se", desc: "瑞典最大本地黄页，组合搜索公司名/城市", region: "🇪🇺 欧洲", recommend: false },
+        { name: "Gulesider (NO)", url: "https://www.gulesider.no", desc: "挪威知名企业名录，数据更新快", region: "🇪🇺 欧洲", recommend: false },
+        { name: "Proff (NO)", url: "https://www.proff.no", desc: "挪威企业详细财务数据及角色信息", region: "🇪🇺 欧洲", recommend: false },
+        { name: "Krak (DK)", url: "https://krak.dk", desc: "丹麦商业目录，行业+地区组合查询", region: "🇪🇺 欧洲", recommend: false },
+        { name: "Firmy (CZ)", url: "https://www.firmy.cz", desc: "捷克知名商业目录，收录绝大部分注册企业", region: "🇪🇺 欧洲", recommend: false },
+        { name: "YellowPages Poland", url: "https://www.yellowpages.pl", desc: "波兰企业名录，支持英文搜索", region: "🇪🇺 欧洲", recommend: false },
+        { name: "192.com (UK/Europe)", url: "https://www.192.com", desc: "英国及欧洲黄页，多角度查询公司/个人", region: "🇪🇺 欧洲", recommend: false },
+        { name: "Endole (UK)", url: "https://open.endole.co.uk", desc: "英国近百万家企业注册+财务+高管", region: "🇪🇺 欧洲", recommend: false },
+        { name: "Yelu (UK)", url: "https://www.yelu.co.uk", desc: "英国企业名录，收录75万家企业", region: "🇪🇺 欧洲", recommend: false },
+        { name: "FreeIndex (UK)", url: "https://www.freeindex.co.uk", desc: "英国本地服务企业平台，用户评价", region: "🇪🇺 欧洲", recommend: false },
+        { name: "SwissYello", url: "https://www.swissyello.com", desc: "瑞士B2B平台，33万+企业", region: "🇪🇺 欧洲", recommend: false },
+        { name: "Local.ch", url: "https://www.local.ch/en", desc: "瑞士主流企业名录，英/德语搜索", region: "🇪🇺 欧洲", recommend: false },
+        { name: "YellowPages (EU)", url: "https://www.yellowpages.eu", desc: "欧洲综合性黄页平台", region: "🇪🇺 欧洲", recommend: false },
+        { name: "Paginas Amarillas (ES)", url: "https://www.paginasamarillas.es", desc: "西班牙企业信息查询平台", region: "🇪🇺 欧洲", recommend: false },
+        { name: "Finstat (SK)", url: "https://www.finstat.sk", desc: "斯洛伐克企业名录+财务信用", region: "🇪🇺 欧洲", recommend: false },
+        { name: "ZlateStranky (SK)", url: "https://www.zlatestranky.sk", desc: "斯洛伐克主流黄页", region: "🇪🇺 欧洲", recommend: false },
+        { name: "ExportPages", url: "https://www.exportpages.com", desc: "德国B2B工业平台", region: "🇪🇺 欧洲", recommend: false },
+        { name: "IndustryStock", url: "https://www.industrystock.com", desc: "欧洲工业B2B平台", region: "🇪🇺 欧洲", recommend: false },
+        { name: "JETRO", url: "https://www.jetro.go.jp", desc: "日本贸易振兴机构，权威企业信息及市场报告", region: "🌏 亚洲", recommend: false },
+        { name: "ITP (日本黄页)", url: "https://itp.ne.jp", desc: "日本本土企业名录", region: "🌏 亚洲", recommend: false },
+        { name: "TradeIndia", url: "https://www.tradeindia.com", desc: "印度最大B2B进出口商名录", region: "🌏 亚洲", recommend: false },
+        { name: "Zauba", url: "https://zauba.com", desc: "印度海关进出口数据平台", region: "🌏 亚洲", recommend: false },
+        { name: "IndianYellowPages", url: "https://www.indianyellowpages.com", desc: "印度综合企业黄页", region: "🌏 亚洲", recommend: false },
+        { name: "JimYellowPages", url: "https://www.jimyellowpages.com", desc: "印度企业名录，南亚市场开发", region: "🌏 亚洲", recommend: false },
+        { name: "Indonetwork (ID)", url: "https://en.indonetwork.co.id", desc: "印尼B2B平台，300万会员", region: "🌏 亚洲", recommend: false },
+        { name: "IndonesiaYP", url: "https://indonesiayp.com", desc: "印尼商业名录", region: "🌏 亚洲", recommend: false },
+        { name: "VietNet", url: "https://viet.net/marketplace/yellow_pages/", desc: "越南黄页", region: "🌏 亚洲", recommend: false },
+        { name: "Vatgia", url: "https://vatgia.com/home/", desc: "越南企业名录", region: "🌏 亚洲", recommend: false },
+        { name: "YellowPages (PH)", url: "https://yellowpages.ph", desc: "菲律宾黄页", region: "🌏 亚洲", recommend: false },
+        { name: "Philexport", url: "https://philexport.ph", desc: "菲律宾出口商名录", region: "🌏 亚洲", recommend: false },
+        { name: "TimesBusinessDirectory", url: "https://www.timesbusinessdirectory.com", desc: "菲律宾及东南亚企业信息", region: "🌏 亚洲", recommend: false },
+        { name: "YellowPages (SG)", url: "https://yellowpages.com.sg", desc: "新加坡黄页", region: "🌏 亚洲", recommend: false },
+        { name: "YellowPages (AE)", url: "https://yellowpages.ae", desc: "阿联酋黄页，中东市场开发", region: "🌏 亚洲", recommend: false },
+        { name: "ReachUAE", url: "https://www.reachuae.com", desc: "中东企业信息平台，电话/邮箱/WhatsApp", region: "🌏 亚洲", recommend: false },
+        { name: "ATNinfo", url: "https://www.atninfo.com", desc: "阿联酋B2B门户，20万+企业数据", region: "🌏 亚洲", recommend: false },
+        { name: "J-GoodTech", url: "https://jgoodtech.smrj.go.jp", desc: "日本中小企业官方B2B平台", region: "🌏 亚洲", recommend: false },
+        { name: "CorporateDir", url: "https://corporatedir.com", desc: "涵盖印度、美国、英国、加拿大四国企业", region: "🌏 亚洲", recommend: false },
+        { name: "Paginas Amarillas (LA)", url: "https://www.paginasamarillas.com", desc: "拉美多国黄页（阿根廷、秘鲁等）", region: "🌎 南美", recommend: false },
+        { name: "Amarillas (CL)", url: "https://www.amarillas.cl", desc: "智利本土黄页，西班牙语搜索，含WhatsApp", region: "🌎 南美", recommend: false },
+        { name: "Dirind (MX)", url: "https://dirind.com", desc: "墨西哥工业企业名录", region: "🌎 南美", recommend: false },
+        { name: "GuiaMais (BR)", url: "https://www.guiamais.com.br", desc: "巴西本地综合信息平台，电话/WhatsApp", region: "🌎 南美", recommend: false },
+        { name: "TrueLocal (AU)", url: "https://www.truelocal.com.au", desc: "澳大利亚本土黄页，公司网站/电话/营业时间", region: "🇦🇺 澳洲", recommend: false },
+        { name: "YellowPages (AU)", url: "https://www.yellowpages.com.au", desc: "澳大利亚黄页，农业畜牧业丰富", region: "🇦🇺 澳洲", recommend: false },
+        { name: "WhitePages (AU)", url: "https://whitepages.com.au", desc: "澳大利亚白页", region: "🇦🇺 澳洲", recommend: false },
+        { name: "WholesaleDirectory (AU)", url: "https://www.wholesaledirectory.com.au", desc: "澳大利亚批发商名录", region: "🇦🇺 澳洲", recommend: false },
+        { name: "NZPages", url: "https://nzpages.co.nz", desc: "新西兰站点目录", region: "🇦🇺 澳洲", recommend: false },
+        { name: "YEP (ZA)", url: "https://www.yep.co.za", desc: "南非企业黄页，部分匹配WhatsApp", region: "🌍 非洲", recommend: false },
+        { name: "Bizcommunity (ZA)", url: "https://bizcommunity.com", desc: "南非商业资讯+企业搜索", region: "🌍 非洲", recommend: false },
+        { name: "YellowPages (EG)", url: "https://yellowpages.com.eg", desc: "埃及黄页", region: "🌍 非洲", recommend: false },
+        { name: "YellowPages Africa", url: "https://yellowpages.africa", desc: "非洲综合性黄页平台", region: "🌍 非洲", recommend: false },
+        { name: "Cataloxy(RU)", url: "https://www.cataloxy.ru", desc: "俄罗斯企业目录，全俄城市覆盖", region: "🇷🇺 俄罗斯&东欧", recommend: false },
+        { name: "Pulscen", url: "https://www.pulscen.ru", desc: "俄罗斯B2B平台，2.7万+企业", region: "🇷🇺 俄罗斯&东欧", recommend: false },
+        { name: "YP.ru", url: "https://www.yp.ru", desc: "俄罗斯黄页，制造业/服务业/零售业", region: "🇷🇺 俄罗斯&东欧", recommend: false },
+        { name: "Agroserver", url: "https://www.agroserver.ru", desc: "俄罗斯农业类B2B，农产品/机械/化肥", region: "🇷🇺 俄罗斯&东欧", recommend: false },
+        { name: "Planplus (RS)", url: "https://www.planplus.rs", desc: "塞尔维亚商业定位工具，类似地图企业", region: "🇷🇺 俄罗斯&东欧", recommend: false },
+        { name: "Biznet (RS)", url: "https://www.biznet.rs", desc: "塞尔维亚企业名录，注册状态查询", region: "🇷🇺 俄罗斯&东欧", recommend: false },
+        { name: "YellowPages (RO)", url: "https://www.paginiaurii.ro", desc: "罗马尼亚本地分类平台", region: "🇷🇺 俄罗斯&东欧", recommend: false },
+        { name: "Ceginformacio (HU)", url: "https://www.ceginformacio.hu", desc: "匈牙利企业名录，法人+注册资料", region: "🇷🇺 俄罗斯&东欧", recommend: false },
+        { name: "1188.lv (LV)", url: "https://www.1188.lv", desc: "拉脱维亚本地服务搜索平台", region: "🇷🇺 俄罗斯&东欧", recommend: false },
+        { name: "SaudiTradeKey", url: "https://saudi.tradekey.com", desc: "沙特企业名录，类别/产品搜索", region: "🇸🇦 中东", recommend: false },
+        { name: "SaudiYellowPages", url: "https://www.saudianyellowpages.com", desc: "沙特黄页", region: "🇸🇦 中东", recommend: false },
+        { name: "OmanYP", url: "https://www.omanyp.com", desc: "阿曼名录，1.6万家公司信息", region: "🇸🇦 中东", recommend: false }
+    ];
+
+    const regionOrder = ["⭐ 优选推荐", "🌍 全球综合", "🇺🇸 北美", "🇪🇺 欧洲", "🌏 亚洲", "🌎 南美", "🇦🇺 澳洲", "🌍 非洲", "🇷🇺 俄罗斯&东欧", "🇸🇦 中东"];
+    let currentFilterRegion = "all";
+    let currentKeyword = "";
+
+    function renderFilters() {
+        const regionsSet = new Set(platformsData.map(p => p.region));
+        const container = document.getElementById("regionFilterContainer");
+        let html = `<button class="filter-btn ${currentFilterRegion === 'all' ? 'active' : ''}" data-region="all">全部</button>`;
+        regionOrder.forEach(reg => {
+            if (regionsSet.has(reg)) {
+                html += `<button class="filter-btn ${currentFilterRegion === reg ? 'active' : ''}" data-region="${reg}">${reg}</button>`;
+            }
+        });
+        container.innerHTML = html;
+        document.querySelectorAll(".filter-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                currentFilterRegion = btn.getAttribute("data-region");
+                renderFilters();
+                renderCards();
+            });
+        });
+    }
+
+    function filterPlatforms() {
+        let filtered = platformsData;
+        if (currentFilterRegion !== "all") filtered = filtered.filter(p => p.region === currentFilterRegion);
+        if (currentKeyword.trim()) {
+            const kw = currentKeyword.trim().toLowerCase();
+            filtered = filtered.filter(p => p.name.toLowerCase().includes(kw) || p.desc.toLowerCase().includes(kw));
+        }
+        return filtered;
+    }
+
+    function renderCards() {
+        const filtered = filterPlatforms();
+        const container = document.getElementById("regionsContainer");
+        document.getElementById("statsCount").innerText = `📌 共 ${filtered.length} 个平台`;
+        if (filtered.length === 0) {
+            container.innerHTML = `<div class="no-results"><i class="fas fa-search-minus"></i> 没有找到相关平台，试试其他关键词～</div>`;
+            return;
+        }
+        const groups = new Map();
+        regionOrder.forEach(reg => groups.set(reg, []));
+        filtered.forEach(p => groups.get(p.region).push(p));
+        let html = "";
+        for (let [region, platforms] of groups.entries()) {
+            if (platforms.length === 0) continue;
+            let icon = "";
+            if (region.includes("优选")) icon = "⭐";
+            else if (region.includes("全球")) icon = "🌐";
+            else if (region.includes("北美")) icon = "🇺🇸";
+            else if (region.includes("欧洲")) icon = "🇪🇺";
+            else if (region.includes("亚洲")) icon = "🌏";
+            else if (region.includes("南美")) icon = "🌎";
+            else if (region.includes("澳洲")) icon = "🇦🇺";
+            else if (region.includes("非洲")) icon = "🌍";
+            else if (region.includes("俄罗斯")) icon = "🇷🇺";
+            else if (region.includes("中东")) icon = "🕌";
+            else icon = "📁";
+            html += `<div class="region-section"><div class="region-title"><i class="fas fa-map-marker-alt"></i> ${icon} ${region}</div><div class="cards-grid">`;
+            platforms.forEach(p => {
+                const recTag = p.recommend ? `<span class="recommend-tag"><i class="fas fa-fire"></i> 优选推荐</span>` : "";
+                html += `<div class="card"><div class="card-content"><div class="card-title"><a href="${p.url}" target="_blank" rel="noopener">${p.name}</a>${recTag}</div><div class="card-desc">${p.desc}</div><a href="${p.url}" target="_blank" rel="noopener" class="card-link"><i class="fas fa-external-link-alt"></i> 访问网站</a></div></div>`;
+            });
+            html += `</div></div>`;
+        }
+        container.innerHTML = html;
+    }
+
+    // ========== 模态框交互逻辑 (修复点击显示微信信息) ==========
+    const modal = document.getElementById("paymentModal");
+    const openBtn = document.getElementById("openPaymentModalBtn");
+    const closeBtn = document.getElementById("closeModalBtn");
+    const copyBtn = document.getElementById("copyWechatBtn");
+    const wechatId = "19902364771";
+
+    if (openBtn) {
+        openBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            modal.style.display = "flex";
+        });
+    }
+    if (closeBtn) {
+        closeBtn.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+    }
+    window.addEventListener("click", (e) => {
+        if (e.target === modal) modal.style.display = "none";
+    });
+    if (copyBtn) {
+        copyBtn.addEventListener("click", () => {
+            navigator.clipboard.writeText(wechatId).then(() => {
+                const originalText = copyBtn.innerHTML;
+                copyBtn.innerHTML = '<i class="fas fa-check"></i> 已复制';
+                setTimeout(() => {
+                    copyBtn.innerHTML = originalText;
+                }, 1500);
+            }).catch(() => {
+                alert("无法自动复制，请手动添加微信号：" + wechatId);
+            });
+        });
+    }
+
+    // 初始化正文渲染
+    function init() {
+        renderFilters();
+        renderCards();
+        const searchInput = document.getElementById("searchInput");
+        if (searchInput) {
+            searchInput.addEventListener("input", (e) => {
+                currentKeyword = e.target.value;
+                renderCards();
+            });
+        }
+    }
+    init();
+</script>
+</body>
+</html>
