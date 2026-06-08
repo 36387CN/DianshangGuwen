@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>甲子科技 | 电商顾问 · AI智慧增长引擎 & 诊断书案例链接</title>
-    <!-- Font Awesome 6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>甲子科技 · 全栈电商顾问 | 运营诊断 + 技术落地</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* ----- 完整复刻自 https://1rengs.com/index.html 的全局样式 (头部+底部) ----- */
         * {
             margin: 0;
             padding: 0;
@@ -15,77 +15,55 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: #fefefe;
-            color: #0c1b33;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #ffffff;
+            color: #1A1F2E;
+            scroll-behavior: smooth;
+            line-height: 1.5;
             overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: #1E5A6F; border-radius: 4px; }
+
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+        h1, h2, h3 { font-weight: 700; letter-spacing: -0.02em; }
+        h1 { font-size: 56px; line-height: 1.2; margin-bottom: 24px; background: linear-gradient(135deg, #0A1A2F 0%, #1E5A6F 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        h2 { font-size: 40px; margin-bottom: 16px; color: #0A1A2F; }
+        .section-subhead { font-size: 18px; color: #5A6874; margin-bottom: 48px; max-width: 700px; }
+
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 32px; border-radius: 48px; font-weight: 600; font-size: 16px; transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1); text-decoration: none; cursor: pointer; border: none; gap: 8px; }
+        .btn-primary { background: linear-gradient(135deg, #1E5A6F 0%, #0F3E4F 100%); color: white; box-shadow: 0 8px 20px rgba(30, 90, 111, 0.3); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(30, 90, 111, 0.4); }
+        .btn-outline { background: transparent; border: 1.5px solid #CBD5E1; color: #1E5A6F; }
+        .btn-outline:hover { border-color: #1E5A6F; background: rgba(30, 90, 111, 0.05); transform: translateY(-3px); }
+        .btn-large { padding: 16px 40px; font-size: 18px; }
+
+        /* 头部导航栏样式 (完全复刻自index.html) */
+        .navbar { padding: 24px 0; border-bottom: 1px solid rgba(203, 213, 225, 0.3); position: sticky; top: 0; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); z-index: 100; }
+        .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.6rem; font-weight: 700; background: linear-gradient(135deg, #0F2B5E, #2563EB); background-clip: text; -webkit-background-clip: text; color: transparent; letter-spacing: -0.3px; }
+        .nav-links { display: flex; gap: 40px; align-items: center; }
+        .nav-links a { text-decoration: none; color: #2C3E50; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: #1E5A6F; }
+
+        /* 底部样式 (完全复刻自index.html) */
+        .footer {
+            padding: 48px 0;
+            background: #FFFFFF;
+            border-top: 1px solid #EDF2F7;
+            text-align: center;
+            font-size: 14px;
+            color: #5A6874;
         }
 
-        /* 头部样式 */
-        header {
-            backdrop-filter: blur(12px);
-            background: rgba(255,255,255,0.85);
-            position: sticky;
-            top: 0;
-            z-index: 200;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.02);
-            border-bottom: 1px solid rgba(0,0,0,0.03);
+        @media (max-width: 900px) { 
+            .container { padding: 0 24px; } 
+            .nav-links { gap: 20px; } 
         }
-        .nav-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 0;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .logo-icon {
-            background: linear-gradient(145deg, #0f2b5e, #1a4cba);
-            width: 42px;
-            height: 42px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: white;
-            box-shadow: 0 8px 16px -6px rgba(26,76,186,0.25);
-        }
-        .logo-text {
-            font-size: 1.6rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #0f2b5e, #2563eb);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            letter-spacing: -0.3px;
-        }
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-        }
-        .nav-links a {
-            text-decoration: none;
-            font-weight: 500;
-            color: #1e293b;
-            transition: 0.2s;
-        }
-        .nav-links a:hover { color: #2563eb; }
 
-        /* 案例链接表格模块 */
+        /* 中间内容样式 (保留自原qiye页面) */
         .link-card-container {
             margin: 60px 0;
             background: rgba(255, 255, 255, 0.85);
@@ -95,7 +73,6 @@
             border: 1px solid rgba(255,255,255,0.5);
             padding: 2rem;
         }
-
         .section-title {
             font-size: 2.2rem;
             font-weight: 700;
@@ -105,25 +82,20 @@
             color: transparent;
             margin-bottom: 1rem;
         }
-
         .section-sub {
             color: #4b6a8b;
             margin-bottom: 2rem;
             border-left: 3px solid #2563eb;
             padding-left: 1rem;
         }
-
         .table-wrapper {
             overflow-x: auto;
         }
-
         .link-table {
             width: 100%;
             border-collapse: separate;
             border-spacing: 0 12px;
         }
-
-        /* 表头单元格水平居中 */
         .link-table thead th {
             text-align: center;
             padding: 0.8rem 1rem;
@@ -134,34 +106,28 @@
             background: rgba(255,255,240,0.5);
             border-radius: 1rem;
         }
-
         .link-table tbody tr {
             background: white;
             border-radius: 1rem;
             box-shadow: 0 2px 6px rgba(0,0,0,0.04);
             transition: all 0.2s;
         }
-
         .link-table tbody tr:hover {
             transform: scale(1.003);
             box-shadow: 0 12px 22px -12px rgba(0, 32, 64, 0.12);
         }
-
-        /* 表格数据单元格水平居中 */
         .link-table td {
             padding: 1rem 1rem;
             vertical-align: middle;
             text-align: center;
         }
-
         .site-name-link, .url-link {
             text-decoration: none;
-            display: inline-flex;      /* 保持内联弹性，使链接宽度自适应，父级 text-align:center 会使其居中 */
+            display: inline-flex;
             align-items: center;
             gap: 8px;
             transition: 0.2s;
         }
-
         .site-name-link {
             font-weight: 600;
             color: #1f6392;
@@ -169,7 +135,6 @@
             padding: 0.2rem 0.8rem;
             border-radius: 40px;
         }
-
         .url-link {
             font-family: monospace;
             font-size: 0.85rem;
@@ -178,71 +143,48 @@
             border-radius: 30px;
             color: #2d7fae;
         }
-
-        .empty-message td {
-            text-align: center;
-            padding: 2.5rem !important;
-            color: #6e8eaa;
-        }
-
-        /* 底部样式 */
-        footer {
-            background: #0c1b33;
-            color: #b9c7e2;
-            padding: 40px 0;
-            text-align: center;
-            margin-top: 2rem;
-        }
-        footer a {
-            color: #ffd966;
-            text-decoration: none;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 768px) {
-            .section-title { font-size: 1.8rem; }
-            .link-card-container { padding: 1.2rem; }
-        }
     </style>
 </head>
 <body>
 
-<!-- ========= 头部 ========= -->
-<header>
-    <div class="container">
-        <div class="nav-bar">
-            <div class="logo">
-                <div class="logo-icon">甲</div>
-                <div class="logo-text">甲子科技</div>
-            </div>
-            <ul class="nav-links">
-                <li><a href="/index.html#home">首页</a></li>
-                <li><a href="/index.html#ai-system">AI系统</a></li>
-                <li><a href="/index.html#solution">解决方案</a></li>
-                <li><a href="/index.html#consultant">电商顾问</a></li>
-                <li><a href="/qiye">客户案例</a></li>
-                <li><a target="_blank" href="https://token.1rengs.com" style="color: red;">投资token工厂</a></li>
-            </ul>
+<!-- 头部：完全复刻自 https://1rengs.com/index.html -->
+<nav class="navbar">
+    <div class="container nav-inner">
+        <div class="logo">甲子科技 · 全栈电商顾问</div>
+        <div class="nav-links">
+            <a href="#advantages">核心优势</a>
+            <a href="#deep-dive">诊断细节</a>
+            <a href="#process">服务流程</a>
+            <a href="#contact" class="btn-outline" style="padding: 8px 20px;">免费诊断</a>
         </div>
     </div>
-</header>
+</nav>
 
 <main>
-    <div class="container" id="link-manager">
+    <div class="container">
+        <!-- 案例链接卡片容器 (保留自原qiye页面，已删除某某科技和创新企业两行) -->
         <div class="link-card-container">
-            <h2 class="section-title">🔗 电商顾问 · 客户店铺诊断书案例</h2>
-            <div class="section-sub">诊断书全面展示了店铺/网站存在的问题</div>
-
+            <h2 class="section-title">📋 电商顾问 · 客户店铺诊断书案例</h2>
+            <div class="section-sub">
+                诊断书全面展示了店铺/网站存在的问题、优化路径及量化提升数据，以下为部分脱敏案例：
+            </div>
             <div class="table-wrapper">
                 <table class="link-table">
                     <thead>
-                        <tr><th>🔖 企业名称</th><th>🌐 链接地址</th></tr>
+                        <tr>
+                            <th>企业名称</th>
+                            <th>链接地址</th>
+                        </tr>
                     </thead>
-                    <tbody id="linkTableBody">
-                        <!-- 动态渲染案例链接 -->
-                        <tr class="empty-message"><td colspan="2">✨ 加载中... ✨</td></tr>
+                    <tbody>
+                        <tr>
+                            <td><a href="#" class="site-name-link"><i class="fas fa-building"></i> 甲子科技</a></td>
+                            <td><a href="https://1rengs.com/qiye" target="_blank" class="url-link"><i class="fas fa-external-link-alt"></i> https://1rengs.com/qiye</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" class="site-name-link"><i class="fas fa-building"></i> 杨氏冻干</a></td>
+                            <td><a href="https://1rengs.com/qiye/yangshi.html" target="_blank" class="url-link"><i class="fas fa-external-link-alt"></i> https://1rengs.com/qiye/yangshi.html</a></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -250,76 +192,25 @@
     </div>
 </main>
 
-<!-- ========= 底部 ========= -->
-<footer>
+<!-- 底部 (完全复刻自 https://1rengs.com) -->
+<footer class="footer">
     <div class="container">
-        <p>© 2026 甲子科技有限公司 — 电商顾问 | AI数据驱动未来</p>
-        <p style="margin-top: 10px; font-size: 15px; color: yellow;">
-            <i class="fas fa-map-marker-alt"></i> 
-            <a target="_blank" href="https://token.1rengs.com" style="color: yellow; text-decoration: none;">投资token工厂</a>
-        </p>
+        <p>© 2026 甲子科技 · 全栈电商顾问 | 运营诊断 + 全栈电脑技术员 | 技术深度决定增长高度</p>
+        <p style="margin-top: 12px;">服务范围：电商诊断 / 店铺优化 / 全栈开发 / 服务器运维 / 自动化集成 / AI本地部署</p>
     </div>
 </footer>
 
 <script>
-    // 默认案例链接数据
-    const DEFAULT_LINKS = [
-        { name: '甲子科技', url: 'https://1rengs.com/qiye' },
-        { name: '杨氏冻干', url: 'https://1rengs.com/qiye/yangshi.html' },
-    ];
-
-    const tbody = document.getElementById('linkTableBody');
-
-    function escapeHtml(str) {
-        if (!str) return '';
-        return str.replace(/[&<>]/g, m => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;' }[m]));
-    }
-
-    function renderLinks(links) {
-        tbody.innerHTML = '';
-        if (!links || links.length === 0) {
-            const emptyTr = document.createElement('tr');
-            emptyTr.className = 'empty-message';
-            emptyTr.innerHTML = '<td colspan="2">✨ 暂无案例链接 ✨</td>';
-            tbody.appendChild(emptyTr);
-            return;
-        }
-
-        links.forEach(link => {
-            let finalUrl = link.url.trim();
-            if (!/^https?:\/\//i.test(finalUrl)) finalUrl = 'https://' + finalUrl;
-
-            const tr = document.createElement('tr');
-
-            // 名称单元格（可点击链接）
-            const tdName = document.createElement('td');
-            const nameLink = document.createElement('a');
-            nameLink.href = finalUrl;
-            nameLink.target = '_blank';
-            nameLink.rel = 'noopener noreferrer';
-            nameLink.className = 'site-name-link';
-            nameLink.innerHTML = `<i class="fas fa-globe"></i> ${escapeHtml(link.name)}`;
-            tdName.appendChild(nameLink);
-
-            // 地址单元格（可点击链接）
-            const tdUrl = document.createElement('td');
-            const urlLink = document.createElement('a');
-            urlLink.href = finalUrl;
-            urlLink.target = '_blank';
-            urlLink.rel = 'noopener noreferrer';
-            urlLink.className = 'url-link';
-            let displayUrl = finalUrl.length > 70 ? finalUrl.substring(0, 65) + '...' : finalUrl;
-            urlLink.textContent = displayUrl;
-            tdUrl.appendChild(urlLink);
-
-            tr.appendChild(tdName);
-            tr.appendChild(tdUrl);
-            tbody.appendChild(tr);
+    // 平滑滚动（保留原页面的交互）
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href === "#" || href === "") return;
+            const target = document.querySelector(href);
+            if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
         });
-    }
-
-    // 初始化：渲染预设链接
-    renderLinks(DEFAULT_LINKS);
+    });
 </script>
+
 </body>
 </html>
