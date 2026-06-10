@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>独立站获客方案 | 甲子科技 · 全栈电商顾问</title>
+    <!-- Google Fonts + 甲子科技原有样式 + 方案样式融合 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <style>
+        /* ----- 全局重置 & 甲子科技风格 ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #ffffff;
+            color: #1e293b;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* 按钮组件 */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 28px;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 40px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+        }
+        .btn-primary {
+            background: #0f172a;
+            color: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .btn-primary:hover {
+            background: #1e293b;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 20px -12px rgba(0,0,0,0.2);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #cbd5e1;
+            color: #1e293b;
+        }
+        .btn-outline:hover {
+            border-color: #0f172a;
+            background: #f8fafc;
+        }
+
+        /* 导航栏 (甲子科技原版风格) */
+        .navbar {
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #eef2ff;
+            padding: 16px 0;
+        }
+        .nav-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #0f172a, #334155);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #334155;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: #0f172a;
+        }
+
+        /* 品牌信任区域 (甲子科技数据模块，提升权威感) */
+        .hero-brand {
+            background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+            padding: 32px 0 32px;
+            border-bottom: 1px solid #eef2ff;
+        }
+        /* 新增主标题区域 */
+        .main-title-block {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .main-title-block h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #0f172a, #2d4a6e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+        }
+        .main-title-block .subhead {
+            font-size: 1.2rem;
+            color: #2c3e66;
+            font-weight: 500;
+            border-top: 2px solid #e2e8f0;
+            display: inline-block;
+            padding-top: 8px;
+        }
+        @media (max-width: 768px) {
+            .main-title-block h1 { font-size: 1.9rem; }
+            .main-title-block .subhead { font-size: 1rem; }
+        }
+
+        .hero-brand-stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+            background: white;
+            border-radius: 28px;
+            padding: 20px 32px;
+            border: 1px solid #eef2ff;
+            margin-top: 16px;
+        }
+        .stat-item {
+            text-align: center;
+            flex: 1;
+        }
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #0f172a;
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            color: #475569;
+        }
+
+        /* ========= 以下为原独立站获客方案的核心样式 (保持干净/双栏) ========= */
+        .schemes-wrapper {
+            padding: 3rem 0 2rem;
+        }
+        .scheme-grid-custom {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+        .scheme-card {
+            border-radius: 1.8rem;
+            background: #ffffff;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+        .scheme-header {
+            padding: 1.5rem 2rem;
+            background: #fefce8;
+            border-bottom: 3px solid #eab308;
+        }
+        .scheme-header.paid {
+            background: #fef9e3;
+            border-bottom-color: #f97316;
+        }
+        .scheme-header.free {
+            background: #ecfdf5;
+            border-bottom-color: #10b981;
+        }
+        .scheme-header h2 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .badge {
+            font-size: 0.8rem;
+            background: #1e293b;
+            color: white;
+            padding: 0.25rem 1rem;
+            border-radius: 40px;
+        }
+        .badge.paid { background: #ea580c; }
+        .badge.free { background: #059669; }
+
+        .scheme-body { padding: 2rem; }
+        .step-block {
+            margin-bottom: 2rem;
+            border-left: 4px solid #e2e8f0;
+            padding-left: 1.5rem;
+        }
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .step-num {
+            background: #f1f5f9;
+            border-radius: 40px;
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        ul, .checklist {
+            margin: 0.5rem 0 0 1.2rem;
+            list-style: none;
+        }
+        li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.4rem;
+        }
+        li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+        .ai-geo-box {
+            background: #eef2ff;
+            border-radius: 1rem;
+            padding: 1.2rem 1.5rem;
+            margin: 1.5rem 0;
+            border: 1px solid #c7d2fe;
+        }
+        .ai-geo-box h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .subnote {
+            font-size: 0.85rem;
+            color: #334155;
+            background: #f8fafc;
+            padding: 0.5rem 1rem;
+            border-radius: 0.8rem;
+            margin-top: 0.8rem;
+        }
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        @media (max-width: 680px) {
+            .two-col { grid-template-columns: 1fr; }
+            .scheme-body { padding: 1.2rem; }
+        }
+
+        /* 甲子科技底部风格 (原版cta + footer) */
+        .cta-footer {
+            background: #0f172a;
+            color: white;
+            border-radius: 32px;
+            padding: 56px 40px;
+            text-align: center;
+            margin: 60px 0 40px;
+        }
+        .footer-contact {
+            background: #334155;
+            border-radius: 60px;
+            padding: 12px 28px;
+            display: inline-flex;
+            gap: 32px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 28px;
+            font-size: 1rem;
+        }
+        .footer-contact span {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .main-footer {
+            border-top: 1px solid #eef2ff;
+            padding: 32px 0;
+            margin-top: 20px;
+            text-align: center;
+            color: #64748b;
+            font-size: 0.8rem;
+        }
+        .inline-link {
+            color: #64748b;
+            text-decoration: none;
+            margin: 0 4px;
+        }
+        .inline-link:hover {
+            color: #0f172a;
+        }
+        @media (max-width: 768px) {
+            .hero-brand-stats { flex-direction: column; align-items: center; gap: 20px; }
+            .nav-flex { flex-direction: column; align-items: flex-start; }
+            .nav-links { flex-wrap: wrap; gap: 16px; }
+            .footer-contact { flex-direction: column; gap: 12px; background: none; padding: 0; }
+            .footer-contact span { background: #334155; padding: 10px 20px; border-radius: 60px; }
+            .cta-footer { padding: 32px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 甲子科技原版导航栏 (头部) -->
+<div class="navbar">
+    <div class="container nav-flex">
+        <div class="logo">⚡ 甲子科技 · 全栈电商顾问</div>
+        <div class="nav-links">
+            <a href="#">首页</a>
+            <a href="#schemes-main">获客方案</a>
+            <a href="#diagnostics">诊断体系</a>
+            <a href="#contact" class="btn btn-outline" style="padding: 8px 20px;">立即咨询</a>
+        </div>
+    </div>
+</div>
+
+<!-- 品牌+新增标题区域 -->
+<div class="hero-brand" id="home">
+    <div class="container">
+        <div class="main-title-block">
+            <h1>📈 独立站客户增长 · 双轨实战系统</h1>
+            <div class="subhead">含付费广告 · 零预算长效增长 · 2026 AI GEO 生成式引擎优化全攻略</div>
+        </div>
+        <div class="hero-brand-stats">
+            <div class="stat-item"><div class="stat-number">10年+</div><div class="stat-label">实战经验</div></div>
+            <div class="stat-item"><div class="stat-number">100+</div><div class="stat-label">品牌深度服务</div></div>
+            <div class="stat-item"><div class="stat-number">30%+</div><div class="stat-label">平均业绩提升</div></div>
+            <div class="stat-item"><div class="stat-number">14+</div><div class="stat-label">全栈技术领域</div></div>
+        </div>
+    </div>
+</div>
+
+<!-- 核心内容: 独立站获客双轨方案 (原完整方案，不含订阅区块) -->
+<div class="container schemes-wrapper" id="schemes-main">
+    <div class="scheme-grid-custom">
+        <!-- 方案一：付费广告获客引擎 -->
+        <div class="scheme-card">
+            <div class="scheme-header paid">
+                <h2>🚀 方案A：付费广告获客引擎 <span class="badge paid">Google Ads · 社交广告 · 联盟营销</span></h2>
+            </div>
+            <div class="scheme-body">
+                <div class="step-block">
+                    <div class="step-title"><span class="step-num">1</span> 搭建广告基础设施 & AI GEO 前置优化</div>
+                    <ul>
+                        <li>安装 Google Tag Manager + GA4，设置转化跟踪（购买/表单提交）。</li>
+                        <li><strong>AI GEO 准备</strong>：为每个产品页面/落地页添加结构化数据（Product, FAQ, HowTo），帮助谷歌 SGE 及 ChatGPT 等 AI 正确理解内容并优先推荐。</li>
+                        <li>利用关键词工具（Semrush / AHrefs）挖掘带有“best/supplier/manufacturer”的高商业意图词，并针对“People also ask”生成自然语言答案。</li>
+                    </ul>
+                </div>
+                <div class="step-block">
+                    <div class="step-title"><span class="step-num">2</span> Google Ads 搜索广告 + 效果最大化广告（Pmax）</div>
+                    <ul>
+                        <li>创建搜索广告系列：按漏斗分层（品牌词、竞品词、核心产品词、长尾问题词）。</li>
+                        <li>使用 Responsive Search Ads (RSA)，至少包含 5 个标题和 2 个描述，并插入关键词插入功能。</li>
+                        <li>启用效果最大化广告：上传产品 Feed（购物）、图片、视频素材，自动探索 AI 展示渠道。</li>
+                        <li><strong>AI GEO 技巧</strong>：在广告扩展中增加常见问题结构化片段，提升谷歌 AI 摘要的抽取概率。</li>
+                    </ul>
+                </div>
+                <div class="step-block">
+                    <div class="step-title"><span class="step-num">3</span> 再营销 + 视频行动广告 (YouTube)</div>
+                    <ul>
+                        <li>创建再营销列表（浏览未购买、加购未支付），设置动态再营销广告。</li>
+                        <li>制作短时教程或客户案例视频，通过 YouTube 行动广告（TrueView for action）引导点击独立站。</li>
+                        <li>利用 AI 生成脚本（ChatGPT/Claude）并根据受众痛点生成多语言字幕，提升视频 SEO 和 AI 推荐度。</li>
+                    </ul>
+                </div>
+                <div class="step-block">
+                    <div class="step-title"><span class="step-num">4</span> LinkedIn / Meta 精准广告 & 联盟营销</div>
+                    <ul>
+                        <li>B2B: LinkedIn 按职位、行业、公司规模定向；B2C: Meta 优势兴趣及自定义受众。</li>
+                        <li>联盟营销启动：在 ShareASale / 或使用 GoAffPro 插件招募博主，提供 10%~30% 佣金。</li>
+                        <li>给联盟客提供 AI 优化的产品数据 feed 和高转化落地页，提升联盟流量质量。</li>
+                    </ul>
+                </div>
+                <div class="ai-geo-box">
+                    <h4>🤖 集成 AI GEO 最佳实践（付费广告配套）</h4>
+                    <ul>
+                        <li>在着陆页增加“专家问答”区块（FAQ Schema），内容直接回答 ChatGPT/Bard 常见用户提问，提升大模型引用率。</li>
+                        <li>利用“内容权威信号”：在页面嵌入客户评价、第三方背书、权威证书，提升 AI 信任评分。</li>
+                        <li>针对 SGE 时代“零点击搜索”趋势，在落地页首屏直接给出答案摘要（价格区间、交货周期、定制能力），帮助 AI 直接抽取展示，增加品牌曝光。</li>
+                        <li>创建“最佳实践指南”内部知识库，利用内部链接串联，提升主题集群权威，利于生成式 AI 归纳品牌为行业专家。</li>
+                    </ul>
+                </div>
+                <div class="step-block">
+                    <div class="step-title"><span class="step-num">5</span> 邮件营销闭环 · 付费流量沉淀</div>
+                    <ul>
+                        <li>广告落地页设置订阅弹窗（提供独家折扣/行业报告），收集邮箱启动自动化序列。</li>
+                        <li>欢迎邮件 + 3 封培育邮件（案例-产品对比-限时优惠）提升转化率。</li>
+                        <li>针对广告点击未购买用户，通过邮件再营销并提供专属优惠码，提升ROI。</li>
+                    </ul>
+                </div>
+                <div class="subnote">💰 预算建议：初期$300-500测试，50%投放转化稳定词，30%测试新受众，20%再营销。持续优化广告素材+AI GEO打分。</div>
+            </div>
+        </div>
+
+        <!-- 方案二：零付费广告 · 内容+社群增长 -->
+        <div class="scheme-card">
+            <div class="scheme-header free">
+                <h2>🌱 方案B：零付费广告 · 内容+社群增长 <span class="badge free">SEO · 视频 · 合作 · AI GEO 驱动</span></h2>
+            </div>
+            <div class="scheme-body">
+                <div class="step-block">
+                    <div class="step-title"><span class="step-num">1</span> AI GEO 内容战略：为生成式搜索引擎优化</div>
+                    <ul>
+                        <li><strong>创建“定义权威”内容矩阵</strong>：针对行业核心痛点，制作长文“终极指南”（Ultimate Guide），覆盖所有相关子问题，使AI大模型在回答用户问题时引用你的内容。</li>
+                        <li>采用“问题-答案”结构（Q&A + 解决方案），直接复现用户搜索的自然语言查询。</li>
+                        <li>增加“专家见解”引用（如采访行业专家），提升内容 EEAT（经验、专业、权威、信任）。</li>
+                        <li>使用 AnswerThePublic、AlsoAsked 挖掘用户问题，并在博客中通过“常见问题”块展示，搭配 FAQ Schema。</li>
+                        <li><strong>结构化数据必备</strong>：Article, HowTo, QAPage, 以及 VideoObject（针对视频），确保AI能完整抓取并用于多模态结果。</li>
+                    </ul>
+                </div>
+                <div class="step-block">
+                    <div class="step-title"><span class="step-num">2</span> 深度内容 & YouTube SEO 收割长尾流量</div>
+                    <ul>
+                        <li>每周产出 2 篇高质量博客（3000字以上），围绕“如何选择/对比/解决”关键词，内链至产品页面。</li>
+                        <li>YouTube：制作解决具体问题的教程视频（如“如何安装XX阀”），优化标题、描述、标签，并在描述首行插入独立站链接。</li>
+                        <li>利用 AI 工具（Descript/Riverside）生成多语言字幕，提升视频在国际市场的可发现性，也便于 AI 提取关键帧。</li>
+                        <li>将视频嵌入博客，构成“文本+视频”复合内容，提高停留时间和 Google SGE 引用权重。</li>
+                    </ul>
+                </div>
+                <div class="step-block">
+                    <div class="step-title"><span class="step-num">3</span> 社群深度参与 + 问答平台 AI 引流</div>
+                    <ul>
+                        <li>Quora / Reddit：每天回答2-3个专业问题，提供详尽方案，并在最后附上“更完整攻略请阅读：链接”，形成自然引流。</li>
+                        <li>LinkedIn 长文：发布行业趋势分析，利用话题标签增加曝光；评论区主动互动，构建行业人脉。</li>
+                        <li>参与 Facebook 专业群组：成为解决技术难题的“热心专家”，主页设置店铺链接。</li>
+                    </ul>
+                </div>
+                <div class="step-block">
+                    <div class="step-title"><span class="step-num">4</span> 合作引流 & 资源页反链建设</div>
+                    <ul>
+                        <li>寻找行业内资源汇总页（Resource Page），提交优质内容申请外链，提升域名权威，有利于AI抓取。</li>
+                        <li>与非竞争品牌进行“邮件简报互推”或“捆绑电子书”合作，交换精准客户群。</li>
+                        <li>为行业媒体撰写客座博客，在作者 bio 中带回独立站链接，增加品牌提及量（AI 信任因子）。</li>
+                    </ul>
+                </div>
+                <div class="ai-geo-box">
+                    <h4>🧠 AI GEO 进阶策略（针对零广告模式）</h4>
+                    <ul>
+                        <li>打造“品牌知识图谱”：创建维基百科风格的“品牌术语表”页面，定义产品核心术语，让 AI 学习并精准关联品牌。</li>
+                        <li>利用“用户生成内容”如客户深度测评、案例分析，提升对话式 AI 推荐时的人气证据。</li>
+                        <li>发布开源工具或免费计算器（例如“关税计算器”），这类工具极容易被 AI 摘要/插件引用，带来持续自然流量。</li>
+                        <li>在博客中主动标注“此文章更新于2026年X月”，并定期维护陈旧文章，SGE 更倾向展示时效性强的内容。</li>
+                    </ul>
+                </div>
+                <div class="step-block">
+                    <div class="step-title"><span class="step-num">5</span> 零成本邮件营销 + 老客户裂变</div>
+                    <ul>
+                        <li>设立“内容诱饵”（行业报告/价格对比表）免费下载，收集邮箱列表。</li>
+                        <li>自动化培育序列：3 封教育邮件 + 1 封限时福利，无需额外广告推动。</li>
+                        <li>推荐有奖：给现有客户专属折扣码，推荐新客户下单后双方获得奖励，实现病毒式增长。</li>
+                    </ul>
+                </div>
+                <div class="subnote">⏳ 时间预期：持续3-6个月见到明显自然流量增长，但积累的客户资产具有长期复利效应，且不受广告平台政策影响。</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI GEO 共性原则模块 (保留) -->
+    <div style="background: #F1F5F9; border-radius: 1.2rem; margin: 2rem 0; padding: 1.5rem;">
+        <h3 style="margin-bottom: 0.5rem;">🤖 2026 AI GEO 共性原则（无论付费与否都必须执行）</h3>
+        <div class="two-col">
+            <div>
+                <p>✔ <strong>生成式引擎优化要点：</strong></p>
+                <ul>
+                    <li>页面内容直接回答“用户接下来想问的3个问题”，采用口语化自然语言。</li>
+                    <li>每个页面包含“专家观点”、“数据来源”、“对比表格”增加丰富度。</li>
+                    <li>使用清晰的小标题（H2/H3）和项目符号，便于AI提取片段。</li>
+                </ul>
+            </div>
+            <div>
+                <p>✔ <strong>技术落地清单：</strong></p>
+                <ul>
+                    <li>部署 RankMath/Yoast 自动优化结构化数据。</li>
+                    <li>开启站点地图提交至 Google Search Console & Bing Webmaster。</li>
+                    <li>监测 SGE 曝光关键词 (Google Search Console > Performance > Search Appearance)。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 甲子科技底部区域 (包含联系信息，无订阅框) -->
+<div class="container" id="contact">
+    <div class="cta-footer">
+        <div style="font-size: 1.8rem; font-weight: 700;">免费获取「店铺诊断」报告</div>
+        <div style="margin: 16px auto; max-width: 550px; opacity:0.9;">提交信息，甲子科技专家团队将为您定制「运营诊断报告 + 技术性能评估」— 从数据到代码全链分析。</div>
+        <div class="footer-contact">
+            <span>📱 微信：19902364771</span>
+            <span>📧 jiazi@36387.cn</span>
+        </div>
+        <div style="margin-top: 30px; font-size: 0.85rem; background: #1e293b; display: inline-block; padding: 8px 28px; border-radius: 60px;">只服务电商卖家/品牌方，拒绝空谈</div>
+    </div>
+</div>
+
+<div class="main-footer">
+    <div class="container">
+        <p>© 2025 甲子科技 · 全栈电商顾问 | 从代码级诊断到增长陪跑 | 运营诊断 × 技术落地</p>
+        <p style="margin-top: 8px;">
+            <a href="#" class="inline-link">首页</a>&nbsp;|&nbsp;
+            <a href="#schemes-main" class="inline-link">获客方案</a>&nbsp;|&nbsp;
+            <a href="/qiye" target="_blank" class="inline-link">官方案例库</a>&nbsp;|&nbsp;
+            <a href="/waimao.html" target="_blank" class="inline-link">外贸企业名录</a>
+        </p>
+    </div>
+</div>
+
+<!-- 移除了原有邮箱订阅相关的JavaScript代码，页面更简洁 -->
+</body>
+</html>
